@@ -28,13 +28,17 @@
                         <option selected>Zero</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
                     </select>
-                    
-                    <button class="btn btn-primary align-self-center w-100 " onclick="comenzar()"> start </button>
 
+                    <button class="btn btn-primary w-100" onclick="comenzar()" style="width: 100px;"> Start </button>
                 </div>
+                <div class="col-2 text-center pt-4" id="randomNum">
+
+                    <i class="fa-solid fa-dice fa-spin-pulse fs-1 pb-2" id="dadoVisto"></i>
+                    <button class="btn btn-primary w-100 mt-4" onclick="getSteps()" style="width: 100px;"> Get Steps </button>
+                </div>
+
+                
 
             </div>
             <div class="row justify-content-center" style="height: 150px;" id="casillas">
@@ -43,36 +47,39 @@
                         <h1 class="mt-5">START</h1>
                     </div>
                     <div class="row justify-content-center pe-3" id="pawns">
-                        <div class="col-2" id="3"></div>
-                        <div class="col-2" id="1"></div>
-                        <div class="col-2" id="2"></div>
-                        <div class="col-2" id="4"></div>
-
+                        <div class="col-2" id="a"></div>
+                        <div class="col-2" id="b"></div>
                     </div>
                 </div>
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('a')" id="a">
+                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('1')" id="1">
                     
                     <div class="row text-center mt-5">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
     
                 </div>
-                <div class="col-2 bg-danger pt-5">
+                <div class="col-2 bg-danger pt-5" onclick="drill('2')" id="2">
 
                     <div class="row text-center mt-5">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5">
+                <div class="col-2 bg-dark text-white pt-5" onclick="drill('3')" id="3">
                     <div class="row text-center mt-4 ">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
 
                 </div>
-                <div class="col-2 bg-secondary text-white text-center">
-                    <h2 class="my-5"> You Decide!</h2>
+                <div class="col-2 bg-secondary text-white text-center" onclick="drill('4')" id="4">
+                    <div class="row">
+
+                    </div>
+                    <div class="row mt-5">
+                        <h2 class="pt-4"> You Decide!</h2>
+                    </div>
+                    
                 </div>
             </div>
             <div class="row justify-content-center" style="height: 30px;" id="casillas">
@@ -84,26 +91,28 @@
                 
             </div>
             <div class="row justify-content-center" style="height: 150px;" id="casillas">
-                <div class="col-2 bg-secondary text-white text-center">
+                <div class="col-2 bg-secondary text-white text-center" id="8">
 
-                    <h2 class="my-5"> You Decide!</h2>
+                    <div class="row mt-5">
+                        <h2 class="pt-4"> You Decide!</h2>
+                    </div>
         
                 </div>                
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('a')" id="a">
+                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('7')" id="7">
                     
                     <div class="row text-center mt-4">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
     
                 </div>
-                <div class="col-2 bg-danger pt-5">
+                <div class="col-2 bg-danger pt-5" onclick="drill('6')" id="6">
 
                     <div class="row text-center mt-4">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5">
+                <div class="col-2 bg-dark text-white pt-5" onclick="drill('5')" id="5">
                     <div class="row text-center mt-4 ">
                         <i class="fa-solid fa-headphones"></i>
                     </div>
@@ -151,28 +160,28 @@
 
                     </div>
                 </div>                               
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('a')" id="a">
+                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('7')" id="7">
                     
                     <div class="row text-center mt-4">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
     
                 </div>
-                <div class="col-2 bg-danger pt-5">
+                <div class="col-2 bg-danger pt-5" onclick="drill('8')" id="8">
 
                     <div class="row text-center mt-4">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5">
+                <div class="col-2 bg-dark text-white pt-5" id="9">
                     <div class="row text-center mt-4 ">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
 
                 </div>
-                <div class="col-2 bg-white border border-dark rounded-end-pill text-center">
+                <div class="col-2 bg-white border border-dark rounded-end-pill text-center" id="10">
 
                     <h1 class="mt-5">END</h1>
 
