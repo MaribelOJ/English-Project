@@ -20,7 +20,7 @@
         </div>
     </header>
     <main>
-        <div class="container-fluid">
+        <div class="container-fluid mb-5">
             <div class="row align-content-center justify-content-center" style="height: 170px;">
                 <div class="col-2">
                     <label for="numPlayers"> Select how many players you are: </label>
@@ -37,11 +37,8 @@
                     <i class="fa-solid fa-dice fa-spin-pulse fs-1 pb-2" id="dadoVisto"></i>
                     <button class="btn btn-primary w-100 mt-4" onclick="getSteps()" style="width: 100px;"> Get Steps </button>
                 </div>
-
-                
-
             </div>
-            <div class="row justify-content-center" style="height: 150px;" id="casillas">
+            <div class="row justify-content-center" style="height: 150px;">
                 <div class="col-2 bg-white border border-dark rounded-start-pill text-center">
                     <div class="row py-1 ">
                         <h1 class="mt-5">START</h1>
@@ -51,32 +48,43 @@
                         <div class="col-2" id="b"></div>
                     </div>
                 </div>
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('1')" id="1">
-                    
-                    <div class="row text-center mt-5">
+                <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling', '1')" id="casilla1">
+                    <div class="row justify-content-center py-1" id="1">
+                        <div class="col-2" id="1a"></div>
+                        <div class="col-2" id="1b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
     
                 </div>
-                <div class="col-2 bg-danger pt-5" onclick="drill('2')" id="2">
-
-                    <div class="row text-center mt-5">
+                <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary', '2')" id="casilla2">
+                    <div class="row justify-content-center py-1" id="2">
+                        <div class="col-2" id="2a"></div>
+                        <div class="col-2" id="2b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5" onclick="drill('3')" id="3">
-                    <div class="row text-center mt-4 ">
+                <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar', '3')" id="casilla3">
+                    <div class="row justify-content-center py-1" id="3">
+                        <div class="col-2" id="3a"></div>
+                        <div class="col-2" id="3b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
 
                 </div>
-                <div class="col-2 bg-secondary text-white text-center" onclick="drill('4')" id="4">
-                    <div class="row">
-
+                <div class="col-2 bg-secondary text-white text-center" onclick="drill('x', '4')" id="casilla4">
+                    <div class="row justify-content-center pt-3" id="4">
+                        <div class="col-2" id="4a"></div>
+                        <div class="col-2" id="4b"></div>
                     </div>
-                    <div class="row mt-5">
+                    <div class="row mt-2 pt-1">
                         <h2 class="pt-4"> You Decide!</h2>
                     </div>
                     
@@ -91,32 +99,45 @@
                 
             </div>
             <div class="row justify-content-center" style="height: 150px;" id="casillas">
-                <div class="col-2 bg-secondary text-white text-center" id="8">
-
-                    <div class="row mt-5">
+                <div class="col-2 bg-secondary text-white text-center" onclick="drill('x', '8')" id="casilla8">
+                    <div class="row justify-content-center pt-3" id="8">
+                        <div class="col-2" id="8a"></div>
+                        <div class="col-2" id="8b"></div>
+                    </div>
+                    <div class="row mt-2 pt-1">
                         <h2 class="pt-4"> You Decide!</h2>
                     </div>
         
-                </div>                
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('7')" id="7">
-                    
-                    <div class="row text-center mt-4">
-                        <i class="fa-solid fa-spell-check fa-xl"></i>
-                    </div>
-    
                 </div>
-                <div class="col-2 bg-danger pt-5" onclick="drill('6')" id="6">
-
-                    <div class="row text-center mt-4">
+                <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('listening', '7')" id="casilla7" >
+                    <div class="row justify-content-center py-1" id="7">
+                        <div class="col-2" id="7a"></div>
+                        <div class="col-2" id="7b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+                </div>                
+                
+                <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary', '6')" id="casilla6">
+                    <div class="row justify-content-center py-1" id="6">
+                        <div class="col-2" id="6a"></div>
+                        <div class="col-2" id="6b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5" onclick="drill('5')" id="5">
-                    <div class="row text-center mt-4 ">
-                        <i class="fa-solid fa-headphones"></i>
+                <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling', '5')" id="casilla5">
+                    <div class="row justify-content-center py-1" id="5">
+                        <div class="col-2" id="5a"></div>
+                        <div class="col-2" id="5b"></div>
+                    </div>                    
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
-
+    
                 </div>
                 <div class="col-2 bg-secondary text-white">
 
@@ -137,7 +158,7 @@
                     
                 </div>
             </div>
-            <div class="row justify-content-center" style="height: 30px;" id="casillas">
+            <div class="row justify-content-center" style="height: 30px;">
                 <div class="col-2 bg-secondary text-white text-center">
                     <p class="text-danger fw-bold">Choose from one of the options</p>
                 </div>
@@ -154,40 +175,185 @@
                             <i class="fa-solid fa-book fa-xl"></i>
                         </div>
                         <div class="col-2 my-5">
-                            <i class="fa-regular fa-circle-check fa-l"></i>
-                            <i class="fa-regular fa-circle-xmark fa-l"></i>
+                            <i class="fa-solid fa-headphones"></i>
                         </div>
 
                     </div>
                 </div>                               
-                <div class="col-2 bg-danger-subtle pt-5" onclick="drill('7')" id="7">
-                    
-                    <div class="row text-center mt-4">
+                <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling', '9')" id="casilla9">
+                    <div class="row justify-content-center py-1" id="9">
+                        <div class="col-2" id="9a"></div>
+                        <div class="col-2" id="9b"></div>
+                    </div>                    
+                    <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
                     </div>
     
                 </div>
-                <div class="col-2 bg-danger pt-5" onclick="drill('8')" id="8">
-
-                    <div class="row text-center mt-4">
+                <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary', '10')" id="casilla10" >
+                    <div class="row justify-content-center py-1" id="10">
+                        <div class="col-2" id="10a"></div>
+                        <div class="col-2" id="10b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-book fa-xl"></i>
                     </div>
         
                 </div>
-                <div class="col-2 bg-dark text-white pt-5" id="9">
-                    <div class="row text-center mt-4 ">
+                <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar', '11')" id="casilla11">
+                    <div class="row justify-content-center py-1" id="11">
+                        <div class="col-2" id="11a"></div>
+                        <div class="col-2" id="11b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
 
                 </div>
-                <div class="col-2 bg-white border border-dark rounded-end-pill text-center" id="10">
+                <div class="col-2 bg-secondary text-white text-center" onclick="drill('x', '12')" id="casilla12">
+                    <div class="row justify-content-center pt-3" id="12">
+                        <div class="col-2" id="12a"></div>
+                        <div class="col-2" id="12b"></div>
+                    </div>
+                    <div class="row mt-2 pt-1">
+                        <h2 class="pt-4"> You Decide!</h2>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="row justify-content-center" style="height: 30px;">
+                <div class="col-8"></div>   
+                <div class="col-2 bg-secondary text-white text-center">
+                    <p class="text-danger fw-bold">Choose from one of the options</p>
+                </div>     
+            </div>
+            <div class="row justify-content-center" style="height: 150px;" onclick="drill('x', '16')" id="casilla16">
+                <div class="col-2 bg-secondary text-white text-center" >
+                    <div class="row justify-content-center pt-3" id="16">
+                        <div class="col-2" id="16a"></div>
+                        <div class="col-2" id="16b"></div>
+                    </div>
+                    <div class="row mt-2 pt-1">
+                        <h2 class="pt-4"> You Decide!</h2>
+                    </div>
+        
+                </div> 
+                <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('listening', '15')" id="casilla15">
+                    <div class="row justify-content-center py-1" id="15">
+                        <div class="col-2" id="15a"></div>
+                        <div class="col-2" id="15b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+
+                </div>             
+                <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary', '14')" id="casilla14">
+                    <div class="row justify-content-center py-1" id="14">
+                        <div class="col-2" id="14a"></div>
+                        <div class="col-2" id="14b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-book fa-xl"></i>
+                    </div>
+        
+                </div>
+                <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling', '13')" id="casilla13">
+                    <div class="row justify-content-center py-1" id="13">
+                        <div class="col-2" id="13a"></div>
+                        <div class="col-2" id="13b"></div>
+                    </div>                    
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-spell-check fa-xl"></i>
+                    </div>
+                </div>
+                <div class="col-2 bg-secondary text-white">
+
+                    <div class="row text-center justify-content-evenly">
+
+                        <div class="col-2 my-5">
+                            <i class="fa-solid fa-spell-check fa-xl"></i>
+                        </div>
+                        <div class="col-2 my-5">
+                            <i class="fa-solid fa-book fa-xl"></i>
+                        </div>
+                        <div class="col-2 my-5">
+                            <i class="fa-regular fa-circle-check fa-l"></i>
+                            <i class="fa-regular fa-circle-xmark fa-l"></i>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row justify-content-center" style="height: 30px;">
+                  
+                <div class="col-2 bg-secondary text-white text-center">
+                    <p class="text-danger fw-bold">Choose from one of the options</p>
+                </div>   
+                <div class="col-8"></div>   
+            </div>
+            <div class="row justify-content-center" style="height: 150px;" id="casillas">
+                <div class="col-2 bg-secondary text-white">
+                    <div class="row text-center justify-content-evenly">
+
+                        <div class="col-2 my-5">
+                            <i class="fa-solid fa-spell-check fa-xl"></i>
+                        </div>
+                        <div class="col-2 my-5">
+                            <i class="fa-solid fa-book fa-xl"></i>
+                        </div>
+                        <div class="col-2 my-5">
+                            <i class="fa-solid fa-headphones"></i>
+                        </div>
+
+                    </div>
+                </div>                               
+                <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling', '17')" id="casilla17">
+                    <div class="row justify-content-center py-1" id="17">
+                        <div class="col-2" id="17a"></div>
+                        <div class="col-2" id="17b"></div>
+                    </div>                    
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-spell-check fa-xl"></i>
+                    </div>
+    
+                </div>
+                <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary', '18')" id="casilla18">
+                    <div class="row justify-content-center py-1" id="18">
+                        <div class="col-2" id="18a"></div>
+                        <div class="col-2" id="18b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-solid fa-book fa-xl"></i>
+                    </div>
+        
+                </div>
+                <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar', '19')" id="casilla19">
+                    <div class="row justify-content-center py-1" id="19">
+                        <div class="col-2" id="19a"></div>
+                        <div class="col-2" id="19b"></div>
+                    </div>
+                    <div class="row mt-3 pt-1">
+                        <i class="fa-regular fa-circle-check fa-l"></i>
+                        <i class="fa-regular fa-circle-xmark fa-l"></i>
+                    </div>
+
+                </div>
+                <div class="col-2 bg-white border border-dark rounded-end-pill text-center">
 
                     <h1 class="mt-5">END</h1>
+                    <div class="row justify-content-center pe-3" id="20">
+                        <div class="col-2" id="20a"></div>
+                        <div class="col-2" id="20b"></div>
+                    </div>
 
                 </div>
                 
             </div>
+
         </div>
     </main>
 
