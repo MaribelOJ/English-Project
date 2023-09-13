@@ -1,8 +1,8 @@
 let turn = 1;
 let cont = 0;
 let indice1 = 0;
-let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'SHELF'];
-let spelling = ['AR - OU - IU - YI - EICH', 'YEI - OU - KEI - I'];
+let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
+let spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
 let jugadorImpar = 0;
 let jugadorPar = 0;
 
@@ -157,27 +157,36 @@ function move(steps){
 }
 
 
-function drill(clue, number){
+function drill(clue){
+    
+    document.getElementById("answer").innerHTML="";
+    let buttonAnswer = document.getElementById('answerRequest');
+    let oldBoton = document.getElementById('old_boton');
+
+    let boton = document.createElement('button');
+    boton.id = 'old_boton'
+    boton.classList.add("btn", "btn-success");
+    boton.setAttribute("onclick","rightAnswer('"+ clue +"')");
+
+    let nodoBoton = document.createTextNode('Answer');
+    boton.appendChild(nodoBoton);
+    buttonAnswer.replaceChild(boton, oldBoton);
 
     if(clue == 'spelling'){
-        let ejercicio = document.createElement('div');
-        ejercicio.id = 'casilla'+number;
-        ejercicio.classList.add("col-2", "bg-info-subtle", "text-center", "py-5");
-        let nodoEje = document.createTextNode('How do you spell '+palabrasTospell[indice1] + '?');
         
-
-        ejercicio.appendChild(nodoEje);
-
-        let answer = document.createElement('button');
-        answer.classList.add("btn", "btn-success");
-
-        let nodoAnswer = document.createTextNode('Answer');
-        answer.appendChild(nodoAnswer);
-        ejercicio.appendChild(answer);
-
-        let cover = document.getElementById('casilla'+number);
-
-        steps.replaceChild(ejercicio, cover);
+        let bodyModal = document.getElementById('bodyModal');
+        let old_ejercicio = document.getElementById('pregunta');
+        
+        
+        let ejercicio = document.createElement('div');
+        let pregunta = document.createElement('p');
+        ejercicio.id = 'pregunta';
+        ejercicio.classList.add("row", "text-center", "py-5");
+        let nodoEje = document.createTextNode('How do you spell '+palabrasTospell[indice1] + '?');
+        pregunta.appendChild(nodoEje);
+        ejercicio.appendChild(pregunta);  
+        bodyModal.replaceChild(ejercicio, old_ejercicio);
+        
 
         indice1++;
         
@@ -188,5 +197,24 @@ function drill(clue, number){
     }else if(clue == 'listening'){
 
     }
+}
+
+function rightAnswer(clue){
+
+    console.log(clue);
+    if(clue == 'spelling'){
+        let old_answer = document.getElementById('answer');
+        let showAnswer = document.getElementById('mostrarRespuesta'); 
+
+        let new_answer = document.createElement('div');
+        new_answer.classList.add("col","text-center");
+        new_answer.id = 'answer';
+        let text = document.createElement('p');
+        let nodoText = document.createTextNode(spelling[indice1-1]);
+        text.appendChild(nodoText);
+        new_answer.appendChild(text);
+        showAnswer.replaceChild(new_answer, old_answer);
+    }
+
 }
 
