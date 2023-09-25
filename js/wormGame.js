@@ -3,6 +3,11 @@ let cont = 0;
 let indice1 = 0;
 let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
 let spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
+let vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED', 'BEAUTIFUL', 'EASY', ''];
+const wordsVideo1 = ['everybody','celebratio','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'];
+let score = 0;
+let attempts = 7;
+const usedWords = new Set();
 let jugadorImpar = 0;
 let jugadorPar = 0;
 
@@ -160,6 +165,10 @@ function move(steps){
 function drill(clue){
     
     document.getElementById("answer").innerHTML="";
+    document.getElementById("pregunta").innerHTML="";
+    document.getElementById('old_boton').innerHTML="";
+    
+
     let buttonAnswer = document.getElementById('answerRequest');
     let oldBoton = document.getElementById('old_boton');
 
@@ -168,33 +177,106 @@ function drill(clue){
     boton.classList.add("btn", "btn-success");
     boton.setAttribute("onclick","rightAnswer('"+ clue +"')");
 
-    let nodoBoton = document.createTextNode('Answer');
+    let nodoBoton = document.createTextNode('Check Answer');
     boton.appendChild(nodoBoton);
-    buttonAnswer.replaceChild(boton, oldBoton);
+    
 
-    if(clue == 'spelling'){
+    let bodyModal = document.getElementById('bodyModal');
+    let ejercicioDisplay = document.getElementById('pregunta');
+    let ejercicio = document.createElement('div');
+    let pregunta = document.createElement('p');
+    ejercicio.id = 'pregunta';
+    ejercicio.classList.add("row", "text-center", "py-5");
+
+    if(clue == 'spelling'){      
         
-        let bodyModal = document.getElementById('bodyModal');
-        let old_ejercicio = document.getElementById('pregunta');
         
-        
-        let ejercicio = document.createElement('div');
-        let pregunta = document.createElement('p');
-        ejercicio.id = 'pregunta';
-        ejercicio.classList.add("row", "text-center", "py-5");
         let nodoEje = document.createTextNode('How do you spell '+palabrasTospell[indice1] + '?');
         pregunta.appendChild(nodoEje);
         ejercicio.appendChild(pregunta);  
-        bodyModal.replaceChild(ejercicio, old_ejercicio);
-        
+        bodyModal.replaceChild(ejercicio, ejercicioDisplay);
+        buttonAnswer.replaceChild(boton, oldBoton);        
 
         indice1++;
         
     }else if(clue == 'vocabulary'){
+        
+
 
     }else if(clue == 'grammar'){
 
     }else if(clue == 'listening'){
+        let video = document.createElement('div');
+        video.classList.add("col-5");
+        video.id='listeningVideo';
+
+        let iframe = document.createElement("iframe");
+        iframe.height="300px";
+        iframe.src = "https://www.youtube.com/embed/So-EvKIYvpQ";
+        video.appendChild(iframe);
+
+        let palabras = document.createElement('div');
+        palabras.classList.add("col");
+        palabras.classList.add('m-5');
+
+        let entrada = document.createElement('div');
+        entrada.classList.add("row");
+
+        let colEntrada=document.createElement('div');
+        colEntrada.classList.add("col");
+        colEntrada.id = 'listeningWords';
+
+        
+
+        let progress = document.createElement('div');
+        progress.classList.add("row","my-5");
+        progress.id = 'progressDisplay';
+        
+
+        let input = document.createElement('input');
+        input.type = "text";
+        input.id = "wordInput";
+        input.placeholder = "Insert a word";
+        input.classList.add('me-3');
+
+        colEntrada.appendChild(input);
+        colEntrada.appendChild(boton);
+        entrada.appendChild(colEntrada);
+
+        let text1 = document.createElement('p');
+        text1.classList.add('text-center');
+        let nodotext1 = document.createTextNode('Puntos Ganados: ');
+        let spanText1 = document.createElement('span');
+        spanText1.id = 'score';
+        spanText1.textContent= '0'
+        text1.appendChild(nodotext1);
+        text1.appendChild(spanText1);
+
+        let text2 = document.createElement('p');
+        text2.classList.add('text-center');
+        let nodotext2 = document.createTextNode('Intentos Restantes: ');
+        let spanText2 = document.createElement('span');
+        spanText2.id = 'attempts';
+        spanText2.textContent= '7'
+        text2.appendChild(nodotext2);
+        text2.appendChild(spanText2);
+
+        progress.appendChild(text1);
+        progress.appendChild(text2);
+
+        palabras.appendChild(entrada);
+        palabras.appendChild(progress);
+
+        ejercicioDisplay.appendChild(video);
+        ejercicioDisplay.appendChild(palabras);
+
+        let Outcome = document.createElement('h4');
+        Outcome.id = 'outcome';
+        Outcome.classList.add('text-center');
+        let nodoOutcome = document.createTextNode('Get at least 5 right words from the video, you have 7 attempts!')
+        Outcome.appendChild(nodoOutcome);
+        let results = document.getElementById('Results');
+        results.replaceChild(Outcome, buttonAnswer);
 
     }
 }
@@ -214,6 +296,47 @@ function rightAnswer(clue){
         text.appendChild(nodoText);
         new_answer.appendChild(text);
         showAnswer.replaceChild(new_answer, old_answer);
+
+   
+    }else if(clue == 'vocabulary'){
+        
+
+
+    }else if(clue == 'grammar'){
+
+    }else if(clue == 'listening'){
+        
+        event.preventDefault(); 
+
+        const wordInput = document.getElementById("wordInput").value.trim().toLowerCase();
+
+        if (wordsVideo1.includes(wordInput) && !usedWords.has(wordInput)) {
+            score++;
+            attempts--;
+            document.getElementById("score").textContent = score;
+            document.getElementById("attempts").textContent = attempts;
+            usedWords.add(wordInput);
+
+            alert("Ganaste un punto, no repitas la palabra.");
+
+            if(attempts == 0 && score < 5){
+                document.getElementById('outcome').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+            }else if(score >= 5){
+                document.getElementById('outcome').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+            }       
+            
+        }else{
+            attempts--;
+            document.getElementById("attempts").textContent = attempts;
+            
+            if(attempts == 0 && score < 5){
+                document.getElementById('outcome').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+            }else if(score >= 5){
+                document.getElementById('outcome').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+            }
+        }
+      
+
     }
 
 }
