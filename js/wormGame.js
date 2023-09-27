@@ -5,7 +5,9 @@ let indiceVideos = 0;
 let indiceListening = 0;
 const palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
 const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
-const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','BEAUTIFUL', 'EASY'];
+const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','QUESO','IGLESIA','CARTUCHERA','FÁCIL','SEDIENTO', 'CUELLO', 'TABLERO', 'MORADO', 'PASTEL', 'DIENTES', 'HAMBRIENTO','CEREZA','MARRÓN','BIBLIOTECA'];
+const translation = ['eyebrows', 'sharpener','thirteen','clock','cheese','church','pencil case','easy', 'thirsty','neck','board','purple','cake','teeth','hungry','cherry','brown','library'];
+
 const videosLinks = ["https://www.youtube.com/embed/So-EvKIYvpQ", "https://www.youtube.com/embed/exu61pb5X68", "https://www.youtube.com/embed/LcSFUP4gGn0", "https://www.youtube.com/embed/tiMaUSvlzIU"];
 
 const videosWords = [
@@ -23,7 +25,8 @@ let attempts = 7;
 const usedWords = new Set();
 let jugadorImpar = 0;
 let jugadorPar = 0;
-let wordToGuess;
+let wordToTranslate;
+let EnglishWord;
 
 
 function comenzar(){
@@ -222,16 +225,16 @@ function drill(clue){
 
         if (vocabulary.length > 0) {
             // Mostrar una palabra en español como pista
-            wordToGuess = vocabulary.pop(); // Asigna la palabra a wordToGuess
-            let nodoEje = document.createTextNode('¿Cómo se escribe "' + wordToGuess + '" en inglés?');
+            wordToTranslate = vocabulary.pop(); // Asigna la palabra a wordToTranslate
+            let nodoEje = document.createTextNode('How do you say/write "' + wordToTranslate + '" in English?');
             pregunta.appendChild(nodoEje);
       
             // Agregar un campo de entrada de texto para la respuesta
             const inputField = document.createElement('input');
             inputField.type = 'text';
             inputField.id = 'vocabularyInput';
-            inputField.placeholder = 'Ingresa la traducción en inglés';
-            inputField.classList.add('me-3');
+            inputField.placeholder = 'Insert the translation';
+            inputField.classList.add('mx-3');
             pregunta.appendChild(inputField);
       
             // Agregar el botón para verificar la respuesta
@@ -351,16 +354,16 @@ function rightAnswer(clue){
 
    
     }else if(clue == 'vocabulary'){
-
+        EnglishWord = translation.pop();
         const inputField = document.getElementById('vocabularyInput');
         const playerAnswer = inputField.value.trim().toLowerCase();
 
-        if (playerAnswer === wordToGuess) {
+        if (playerAnswer === EnglishWord) {
             // Respuesta correcta
-            alert('¡Correcto! La palabra es "' + wordToGuess + '".');
+            alert('Felicidades! PUEDES AVANZAR :)');
         } else {
             // Respuesta incorrecta
-            alert('Incorrecto. La respuesta correcta es "' + wordToGuess + '".');
+            alert('Incorrecto. La respuesta correcta es "' + EnglishWord + '".NO PUEDES AVANZAR!');
         }
 
             // Limpia el campo de entrada
@@ -387,11 +390,11 @@ function rightAnswer(clue){
             alert("Ganaste un punto, no repitas la palabra.");
 
             if(attempts == 0 && score < 5){
-                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, NO PUEDES AVANZAR! :/";
 
                 
             }else if(score == 5){
-                document.getElementById('answerRequest').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                document.getElementById('answerRequest').textContent = "Ingresaste las 5 palabras correctamente, PUEDES AVANZAR! :)";
                 indiceListening++;
                 indiceVideos++;
                 attempts = 0;                            
@@ -402,9 +405,9 @@ function rightAnswer(clue){
             document.getElementById("attempts").textContent = attempts;
             
             if(attempts == 0 && score < 5){
-                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, NO PUEDES AVANZAR! :/";
             }else if(score >= 5){
-                document.getElementById('answerRequest').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                document.getElementById('answerRequest').textContent = "Ingresaste las 5 palabras correctamente, PUEDES AVANZAR! :)";
                 indiceListening++;
                 indiceVideos++;
                 attempts = 0;
