@@ -239,7 +239,7 @@ function drill(clue){
       
             ejercicio.appendChild(pregunta);
             bodyModal.replaceChild(ejercicio, ejercicioDisplay);
-            buttonAnswer.replaceChild(boton, oldBotton);
+            results.replaceChild(boton1Place, buttonAnswer);
           } else {
             // Cuando se han agotado todas las palabras del juego de vocabulario
             let nodoEje = document.createTextNode('¡No hay más palabras para adivinar!');
