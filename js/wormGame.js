@@ -1,6 +1,5 @@
 let turn = 1;
 let cont = 0;
-<<<<<<< HEAD
 let indiceSpelling = 0;
 let indiceVideos = 0;
 let indiceListening = 0;
@@ -19,13 +18,6 @@ const videosWords = [
     ['okay','i','got','a','box','but','there','no','key','in', 'here','just','letters','the','wrong','box','put','it', 'back','are','these', 'from','your','grandmother','read','those','look','she','calls','you','moon','pie', 'that','is','so','cute','how','train', 'ride','delightful','listen','know','what','doing','right','now','there','are', 'little', 'bubbles','forming','the', 'corner','of', 'mouth','kind','crossed','line','put','him','back','on','thank', 'up','one']
 
 ];
-=======
-let indice1 = 0;
-let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
-let spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
-let vocabulary = ['facil','casa','dog','gato','libro','amigo', ];
-const wordsVideo1 = ['everybody','celebratio','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'];
->>>>>>> refs/remotes/origin/main
 let score = 0;
 let attempts = 7;
 const usedWords = new Set();
