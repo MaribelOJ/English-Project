@@ -1,5 +1,6 @@
 let turn = 1;
 let cont = 0;
+<<<<<<< HEAD
 let indiceSpelling = 0;
 let indiceVideos = 0;
 let indiceListening = 0;
@@ -18,11 +19,20 @@ const videosWords = [
     ['okay','i','got','a','box','but','there','no','key','in', 'here','just','letters','the','wrong','box','put','it', 'back','are','these', 'from','your','grandmother','read','those','look','she','calls','you','moon','pie', 'that','is','so','cute','how','train', 'ride','delightful','listen','know','what','doing','right','now','there','are', 'little', 'bubbles','forming','the', 'corner','of', 'mouth','kind','crossed','line','put','him','back','on','thank', 'up','one']
 
 ];
+=======
+let indice1 = 0;
+let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
+let spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
+let vocabulary = ['facil','casa','dog','gato','libro','amigo', ];
+const wordsVideo1 = ['everybody','celebratio','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'];
+>>>>>>> refs/remotes/origin/main
 let score = 0;
 let attempts = 7;
 const usedWords = new Set();
 let jugadorImpar = 0;
 let jugadorPar = 0;
+let wordToGuess;
+
 
 function comenzar(){
     let numJugadores = document.getElementById('numPlayers').value;
@@ -190,7 +200,7 @@ function drill(clue){
 
     let boton = document.createElement('button');
     boton.classList.add("btn", "btn-success");
-    boton.setAttribute("onclick","rightAnswer('"+ clue +"')");
+    boton.setAttribute("onclick", "rightAnswer('"+ clue +"')");
 
     let nodoBoton = document.createTextNode('Check Answer');
     boton.appendChild(nodoBoton);
@@ -218,7 +228,34 @@ function drill(clue){
         
     }else if(clue == 'vocabulary'){
 
-
+        if (vocabulary.length > 0) {
+            // Mostrar una palabra en español como pista
+            wordToGuess = vocabulary.pop(); // Asigna la palabra a wordToGuess
+            let nodoEje = document.createTextNode('¿Cómo se escribe "' + wordToGuess + '" en inglés?');
+            pregunta.appendChild(nodoEje);
+      
+            // Agregar un campo de entrada de texto para la respuesta
+            const inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.id = 'vocabularyInput';
+            inputField.placeholder = 'Ingresa la traducción en inglés';
+            inputField.classList.add('me-3');
+            pregunta.appendChild(inputField);
+      
+            // Agregar el botón para verificar la respuesta
+            pregunta.appendChild(boton);
+      
+            ejercicio.appendChild(pregunta);
+            bodyModal.replaceChild(ejercicio, ejercicioDisplay);
+            buttonAnswer.replaceChild(boton, oldBotton);
+          } else {
+            // Cuando se han agotado todas las palabras del juego de vocabulario
+            let nodoEje = document.createTextNode('¡No hay más palabras para adivinar!');
+            pregunta.appendChild(nodoEje);
+            ejercicio.appendChild(pregunta);
+            bodyModal.replaceChild(ejercicio, ejercicioDisplay);
+          }
+      
     }else if(clue == 'grammar'){
 
     }else if(clue == 'listening'){
@@ -322,8 +359,23 @@ function rightAnswer(clue){
 
    
     }else if(clue == 'vocabulary'){
-        
 
+        const inputField = document.getElementById('vocabularyInput');
+        const playerAnswer = inputField.value.trim().toLowerCase();
+
+        if (playerAnswer === wordToGuess) {
+            // Respuesta correcta
+            alert('¡Correcto! La palabra es "' + wordToGuess + '".');
+        } else {
+            // Respuesta incorrecta
+            alert('Incorrecto. La respuesta correcta es "' + wordToGuess + '".');
+        }
+
+            // Limpia el campo de entrada
+            inputField.value = '';
+
+            // Continúa con el siguiente ejercicio
+            mostrarPalabra();
 
     }else if(clue == 'grammar'){
 
