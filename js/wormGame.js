@@ -1,10 +1,23 @@
 let turn = 1;
 let cont = 0;
-let indice1 = 0;
-let palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
-let spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
-let vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED', 'BEAUTIFUL', 'EASY', ''];
-const wordsVideo1 = ['everybody','celebratio','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'];
+let indiceSpelling = 0;
+let indiceVideos = 0;
+let indiceListening = 0;
+const palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
+const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
+const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','BEAUTIFUL', 'EASY'];
+const videosLinks = ["https://www.youtube.com/embed/So-EvKIYvpQ", "https://www.youtube.com/embed/exu61pb5X68", "https://www.youtube.com/embed/LcSFUP4gGn0", "https://www.youtube.com/embed/tiMaUSvlzIU"];
+
+const videosWords = [
+    ['thank','rude',"sorry",'pick','up','her','get','please','you','will','good','noticed','not','on','is','that','still','of','out','was','have','wanted','here','your','dropped','she','a','start','has','ordered','make','to','like','would','i','everybody','celebration','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'],
+
+    [ 'i','need','your','help','are','you','okay','sorry', 'just','real','quick','why','is','there','a','lampshade','on','head','listen', 'baby','gotta','be','honest','little','bit','of','catnip','that','great', 'it','everything','all','right', 'do','hear','what','like','tiny','motor','calming','sound','know','good','purring','me','guess','in', 'the','coming','from','inside','wonder','sounds','could','make','trusted','to','look', 'after', 'his', 'busy','bee','boy','would','please','stop','finished','this','important','back','but','teach','way','cat'],
+
+    ['i','wear','nautical','not','even','friday','come','on','putting','this','thing', 'What','have','you','done','to', 'me','way', 'all','the','racket', 'he','adorable', 'got','one','for','smile','for','camera','it','makes','feel', 'weak','who', 'ticklish','work','on','here','dead','down','there', 'come', 'everyone','has','spot','a'],
+
+    ['okay','i','got','a','box','but','there','no','key','in', 'here','just','letters','the','wrong','box','put','it', 'back','are','these', 'from','your','grandmother','read','those','look','she','calls','you','moon','pie', 'that','is','so','cute','how','train', 'ride','delightful','listen','know','what','doing','right','now','there','are', 'little', 'bubbles','forming','the', 'corner','of', 'mouth','kind','crossed','line','put','him','back','on','thank', 'up','one']
+
+];
 let score = 0;
 let attempts = 7;
 const usedWords = new Set();
@@ -166,19 +179,23 @@ function drill(clue){
     
     document.getElementById("answer").innerHTML="";
     document.getElementById("pregunta").innerHTML="";
-    document.getElementById('old_boton').innerHTML="";
     
-
+    let results = document.getElementById('Results');
     let buttonAnswer = document.getElementById('answerRequest');
-    let oldBoton = document.getElementById('old_boton');
+    
+    let boton1Place= document.createElement('div');
+    boton1Place.classList.add("col-3");
+    boton1Place.id='answerRequest';
+
 
     let boton = document.createElement('button');
-    boton.id = 'old_boton'
     boton.classList.add("btn", "btn-success");
     boton.setAttribute("onclick","rightAnswer('"+ clue +"')");
 
     let nodoBoton = document.createTextNode('Check Answer');
     boton.appendChild(nodoBoton);
+
+    boton1Place.appendChild(boton);
     
 
     let bodyModal = document.getElementById('bodyModal');
@@ -191,29 +208,35 @@ function drill(clue){
     if(clue == 'spelling'){      
         
         
-        let nodoEje = document.createTextNode('How do you spell '+palabrasTospell[indice1] + '?');
+        let nodoEje = document.createTextNode('How do you spell '+palabrasTospell[indiceSpelling] + '?');
         pregunta.appendChild(nodoEje);
         ejercicio.appendChild(pregunta);  
         bodyModal.replaceChild(ejercicio, ejercicioDisplay);
-        buttonAnswer.replaceChild(boton, oldBoton);        
+        results.replaceChild(boton1Place, buttonAnswer);        
 
-        indice1++;
+        indiceSpelling++;
         
     }else if(clue == 'vocabulary'){
-        
 
 
     }else if(clue == 'grammar'){
 
     }else if(clue == 'listening'){
+
+        console.log(indiceListening);
+
         let video = document.createElement('div');
         video.classList.add("col-5");
         video.id='listeningVideo';
-
+        
         let iframe = document.createElement("iframe");
-        iframe.height="300px";
-        iframe.src = "https://www.youtube.com/embed/So-EvKIYvpQ";
+        iframe.height="300";
+        iframe.width="300";
+        iframe.src = videosLinks[indiceVideos];
+        iframe.title = "Video de Youtube";    
+        
         video.appendChild(iframe);
+       
 
         let palabras = document.createElement('div');
         palabras.classList.add("col");
@@ -248,7 +271,7 @@ function drill(clue){
         let nodotext1 = document.createTextNode('Puntos Ganados: ');
         let spanText1 = document.createElement('span');
         spanText1.id = 'score';
-        spanText1.textContent= '0'
+        spanText1.textContent= '0';
         text1.appendChild(nodotext1);
         text1.appendChild(spanText1);
 
@@ -257,7 +280,7 @@ function drill(clue){
         let nodotext2 = document.createTextNode('Intentos Restantes: ');
         let spanText2 = document.createElement('span');
         spanText2.id = 'attempts';
-        spanText2.textContent= '7'
+        spanText2.textContent= '7';
         text2.appendChild(nodotext2);
         text2.appendChild(spanText2);
 
@@ -269,21 +292,21 @@ function drill(clue){
 
         ejercicioDisplay.appendChild(video);
         ejercicioDisplay.appendChild(palabras);
-
+        
+        
         let Outcome = document.createElement('h4');
-        Outcome.id = 'outcome';
+        Outcome.id = 'answerRequest';
         Outcome.classList.add('text-center');
         let nodoOutcome = document.createTextNode('Get at least 5 right words from the video, you have 7 attempts!')
         Outcome.appendChild(nodoOutcome);
-        let results = document.getElementById('Results');
+        
         results.replaceChild(Outcome, buttonAnswer);
-
+        
     }
 }
 
 function rightAnswer(clue){
 
-    console.log(clue);
     if(clue == 'spelling'){
         let old_answer = document.getElementById('answer');
         let showAnswer = document.getElementById('mostrarRespuesta'); 
@@ -292,7 +315,7 @@ function rightAnswer(clue){
         new_answer.classList.add("col","text-center");
         new_answer.id = 'answer';
         let text = document.createElement('p');
-        let nodoText = document.createTextNode(spelling[indice1-1]);
+        let nodoText = document.createTextNode(spelling[indiceSpelling-1]);
         text.appendChild(nodoText);
         new_answer.appendChild(text);
         showAnswer.replaceChild(new_answer, old_answer);
@@ -310,7 +333,7 @@ function rightAnswer(clue){
 
         const wordInput = document.getElementById("wordInput").value.trim().toLowerCase();
 
-        if (wordsVideo1.includes(wordInput) && !usedWords.has(wordInput)) {
+        if (videosWords[indiceListening].includes(wordInput) && !usedWords.has(wordInput)) {
             score++;
             attempts--;
             document.getElementById("score").textContent = score;
@@ -320,9 +343,14 @@ function rightAnswer(clue){
             alert("Ganaste un punto, no repitas la palabra.");
 
             if(attempts == 0 && score < 5){
-                document.getElementById('outcome').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
-            }else if(score >= 5){
-                document.getElementById('outcome').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+
+                
+            }else if(score == 5){
+                document.getElementById('answerRequest').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                indiceListening++;
+                indiceVideos++;
+                attempts = 0;                            
             }       
             
         }else{
@@ -330,12 +358,22 @@ function rightAnswer(clue){
             document.getElementById("attempts").textContent = attempts;
             
             if(attempts == 0 && score < 5){
-                document.getElementById('outcome').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
+                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, Vuelve a donde estabas! :/";
             }else if(score >= 5){
-                document.getElementById('outcome').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                document.getElementById('answerRequest').textContent = "Excellent! Ingresaste las 5 palabras correctamente :)";
+                indiceListening++;
+                indiceVideos++;
+                attempts = 0;
             }
         }
-      
+
+        document.getElementById('wordInput').value ="";   
+
+        if(attempts == 0){
+            document.getElementById('pregunta').innerHTML="";
+            score = 0;
+            attempts = 7;
+        }
 
     }
 
