@@ -3,7 +3,6 @@ const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - 
 const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','QUESO','IGLESIA','CARTUCHERA','FÁCIL','SEDIENTO', 'CUELLO', 'TABLERO', 'MORADO', 'PASTEL', 'DIENTES', 'HAMBRIENTO','CEREZA','MARRÓN','BIBLIOTECA'];
 const translation = ['eyebrows', 'sharpener','thirteen','clock','cheese','church','pencil case','easy', 'thirsty','neck','board','purple','cake','teeth','hungry','cherry','brown','library'];
 const videosLinks = ["https://www.youtube.com/embed/So-EvKIYvpQ", "https://www.youtube.com/embed/exu61pb5X68", "https://www.youtube.com/embed/LcSFUP4gGn0", "https://www.youtube.com/embed/tiMaUSvlzIU"];
-
 const videosWords = [
     ['thank','rude',"sorry",'pick','up','her','get','please','you','will','good','noticed','not','on','is','that','still','of','out','was','have','wanted','here','your','dropped','she','a','start','has','ordered','make','to','like','would','i','everybody','celebration','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'],
 
@@ -392,7 +391,8 @@ function drill(clue){
     }
 }
 
-function rightAnswer(clue){
+
+function rightAnswer(clue) {
 
     if(clue == 'spelling'){
         let old_answer = document.getElementById('answer');
@@ -408,10 +408,12 @@ function rightAnswer(clue){
         showAnswer.replaceChild(new_answer, old_answer);
 
    
-    }else if(clue == 'vocabulary'){
+    }else  if (clue === 'vocabulary') {
+        let buttonAnswer = document.getElementById('answerRequest');
+        
         EnglishWord = translation.pop();
         const inputField = document.getElementById('vocabularyInput');
-        const playerAnswer = inputField.value.trim().toLowerCase();
+        const playerAnswer = inputField.value.trim().toLowerCase();  
 
         if (playerAnswer === EnglishWord) {
             // Respuesta correcta
@@ -421,12 +423,11 @@ function rightAnswer(clue){
             alert('Incorrecto. La respuesta correcta es "' + EnglishWord + '".NO PUEDES AVANZAR!');
         }
 
-            // Limpia el campo de entrada
-            inputField.value = '';
-
-            // Continúa con el siguiente ejercicio
-            mostrarPalabra();
-
+        // Limpia el campo de entrada
+        inputField.value = '';
+        // Deshabilita input y boton check answer
+        inputField.disabled = true;
+        buttonAnswer.disabled = true;
     }else if(clue == 'grammar'){
         let option = document.getElementsByName("grammar");
         let answer= rightOption.pop();
