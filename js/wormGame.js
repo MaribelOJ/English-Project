@@ -1,13 +1,7 @@
-let turn = 1;
-let cont = 0;
-let indiceSpelling = 0;
-let indiceVideos = 0;
-let indiceListening = 0;
 const palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
 const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
 const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','QUESO','IGLESIA','CARTUCHERA','FÁCIL','SEDIENTO', 'CUELLO', 'TABLERO', 'MORADO', 'PASTEL', 'DIENTES', 'HAMBRIENTO','CEREZA','MARRÓN','BIBLIOTECA'];
 const translation = ['eyebrows', 'sharpener','thirteen','clock','cheese','church','pencil case','easy', 'thirsty','neck','board','purple','cake','teeth','hungry','cherry','brown','library'];
-
 const videosLinks = ["https://www.youtube.com/embed/So-EvKIYvpQ", "https://www.youtube.com/embed/exu61pb5X68", "https://www.youtube.com/embed/LcSFUP4gGn0", "https://www.youtube.com/embed/tiMaUSvlzIU"];
 
 const videosWords = [
@@ -20,6 +14,19 @@ const videosWords = [
     ['okay','i','got','a','box','but','there','no','key','in', 'here','just','letters','the','wrong','box','put','it', 'back','are','these', 'from','your','grandmother','read','those','look','she','calls','you','moon','pie', 'that','is','so','cute','how','train', 'ride','delightful','listen','know','what','doing','right','now','there','are', 'little', 'bubbles','forming','the', 'corner','of', 'mouth','kind','crossed','line','put','him','back','on','thank', 'up','one']
 
 ];
+
+const sentences = ['she and I _________ going for a walk','_______ of the girls is good at mathematics','There are _________ bottles of water','__________ police station near my house is always garded','This is ___________ orange market','___________ is my room at the end of the hall','He is ___________ his homework','She ___________ a movie every day','__________ you like a cup of coffee?','___________ you want to work?'];
+
+const options = ['AM', 'ARE','ONE','SOME','MUCH','MANY','THE','A','AN','A','THIS','THAT','DOING','DOESING','WATCH','WATCHES','DO','WOULD','DO','DOES'];
+
+const rightOption = ['ARE','ONE','MANY','THE','AN','THAT','DOING','WATCHES','WOULD','DO'];
+
+
+let turn = 1;
+let cont = 0;
+let indiceSpelling = 0;
+let indiceVideos = 0;
+let indiceListening = 0;
 let score = 0;
 let attempts = 7;
 const usedWords = new Set();
@@ -27,6 +34,7 @@ let jugadorImpar = 0;
 let jugadorPar = 0;
 let wordToTranslate;
 let EnglishWord;
+let copia = "";
 
 
 function comenzar(){
@@ -189,7 +197,7 @@ function drill(clue){
     let buttonAnswer = document.getElementById('answerRequest');
     
     let boton1Place= document.createElement('div');
-    boton1Place.classList.add("col-3");
+    boton1Place.classList.add("col-3","text-center");
     boton1Place.id='answerRequest';
 
 
@@ -252,6 +260,54 @@ function drill(clue){
           }
       
     }else if(clue == 'grammar'){
+        let oracion = sentences.pop();
+        
+
+        let nodoEje = document.createTextNode("COMPLETE:   "+oracion);
+        pregunta.appendChild(nodoEje);
+
+        let fila1 = document.createElement('div');
+        fila1.classList.add('row');
+        fila1.appendChild(pregunta);
+
+        let answer1=options.pop();
+
+        let opcion1 = document.createElement("input");
+        opcion1.classList.add("me-2");
+        opcion1.type = "radio";
+        opcion1.name = "grammar"; 
+        opcion1.value = answer1;
+
+        let label1 = document.createElement("label");
+        label1.innerHTML = answer1;
+
+        let answer2=options.pop();
+
+        let opcion2 = document.createElement("input");
+        opcion2.classList.add("me-2");
+        opcion2.type = "radio";
+        opcion2.name = "grammar"; 
+        opcion2.value = answer2;
+
+        let label2 = document.createElement("label");
+        label2.innerHTML = answer2;
+
+
+
+        let fila2 = document.createElement('div');
+        fila2.classList.add('form-check');
+        fila2.appendChild(opcion1);
+        fila2.appendChild(label1);
+        fila2.appendChild(document.createElement("br"));
+        fila2.appendChild(opcion2);
+        fila2.appendChild(label2);
+
+
+        ejercicio.appendChild(fila1);
+        ejercicio.appendChild(fila2);  
+        bodyModal.replaceChild(ejercicio, ejercicioDisplay);
+        results.replaceChild(boton1Place, buttonAnswer);
+
 
     }else if(clue == 'listening'){
 
@@ -280,8 +336,7 @@ function drill(clue){
         let colEntrada=document.createElement('div');
         colEntrada.classList.add("col");
         colEntrada.id = 'listeningWords';
-
-        
+     
 
         let progress = document.createElement('div');
         progress.classList.add("row","my-5");
@@ -373,6 +428,32 @@ function rightAnswer(clue){
             mostrarPalabra();
 
     }else if(clue == 'grammar'){
+        let option = document.getElementsByName("grammar");
+        let answer= rightOption.pop();
+        console.log(answer);
+        
+
+        for (var i = 0; i < option.length; i++) {
+            if(option[i].checked){
+                let radio = option[i];
+                let valorOption = radio.value;
+                
+                console.log(valorOption);
+       
+                if(valorOption == answer && copia == ""){
+                    alert('Felicidades! PUEDES AVANZAR :)');
+                }else if(valorOption != answer && copia == ""){
+                    alert('NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!');
+                    copia = valorOption;
+                }else{
+                    alert('RESPUESTA SIN REGISTRAR');
+                    rightOption.push(answer);
+                    copia = "";
+                }
+                break;
+            }
+        } 
+
 
     }else if(clue == 'listening'){
         
