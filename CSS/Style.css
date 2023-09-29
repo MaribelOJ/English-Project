@@ -1,0 +1,26 @@
+
+/* Estilos para el juego de la serpiente */
+#randomNum {
+    margin-top: 20px;
+}
+
+#dadoVisto {
+    animation: spin 3s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#pawns .col-2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #cbcbcb;
+}
+
+i{
+    cursor: pointer;
+    font-size: 30px;
+}

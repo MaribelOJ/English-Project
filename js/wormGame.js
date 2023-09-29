@@ -38,6 +38,26 @@ let lastMovePar =0;
 let lastMoveImpar = 0;
 
 
+function showNotification(playerName, steps) {
+    const notificationDiv = document.getElementById("notification");
+    notificationDiv.textContent = `Jugador: ${playerName}, Pasos: ${steps}`;
+    notificationDiv.classList.remove("alert-success", "alert-info", "alert-warning", "alert-danger");
+    notificationDiv.classList.add("alert-info");
+
+    // Ajustar la posición en la parte superior derecha
+    notificationDiv.style.position = "fixed";
+    notificationDiv.style.top = "20px";  // Ajusta la distancia desde la parte superior
+    notificationDiv.style.right = "20px";  // Ajusta la distancia desde la derecha
+
+    notificationDiv.style.display = "block";
+
+    // Opcional: Ocultar la notificación después de unos segundos
+    setTimeout(() => {
+        notificationDiv.style.display = "none";
+    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+}
+
+
 function comenzar(){
     let numJugadores = document.getElementById('numPlayers').value;
     document.getElementById('numPlayers').value = "Zero";
@@ -122,6 +142,9 @@ function getSteps(){
     }else{
         newDie.classList.add("text-info");
     }
+
+    showNotification("Jugador " + (turn % 2 === 0 ? "2" : "1"), steps); // Muestra la notificación
+
 
     turn++;   
     move(steps);
@@ -297,7 +320,7 @@ function drill(clue){
             results.replaceChild(boton1Place, buttonAnswer);
           } else {
             // Cuando se han agotado todas las palabras del juego de vocabulario
-            let nodoEje = document.createTextNode('¡No hay más palabras para adivinar!');
+            let nodoEje = document.createTextNode('¡No hay más palabras para traducir!');
             pregunta.appendChild(nodoEje);
             ejercicio.appendChild(pregunta);
             bodyModal.replaceChild(ejercicio, ejercicioDisplay);
@@ -450,6 +473,7 @@ function rightAnswer(clue) {
         text.appendChild(nodoText);
         new_answer.appendChild(text);
         showAnswer.replaceChild(new_answer, old_answer);
+        createBootstrapNotification("Respuesta correcta", "¡Felicidades! Puedes avanzar :)", "success");
 
    
     }else  if (clue === 'vocabulary') {
@@ -549,4 +573,3 @@ function rightAnswer(clue) {
     }
 
 }
-
