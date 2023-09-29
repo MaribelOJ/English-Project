@@ -36,6 +36,26 @@ let EnglishWord;
 let copia = "";
 
 
+function showNotification(playerName, steps) {
+    const notificationDiv = document.getElementById("notification");
+    notificationDiv.textContent = `Jugador: ${playerName}, Pasos: ${steps}`;
+    notificationDiv.classList.remove("alert-success", "alert-info", "alert-warning", "alert-danger");
+    notificationDiv.classList.add("alert-info");
+
+    // Ajustar la posición en la parte superior derecha
+    notificationDiv.style.position = "fixed";
+    notificationDiv.style.top = "20px";  // Ajusta la distancia desde la parte superior
+    notificationDiv.style.right = "20px";  // Ajusta la distancia desde la derecha
+
+    notificationDiv.style.display = "block";
+
+    // Opcional: Ocultar la notificación después de unos segundos
+    setTimeout(() => {
+        notificationDiv.style.display = "none";
+    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+}
+
+
 function comenzar(){
     let numJugadores = document.getElementById('numPlayers').value;
     document.getElementById('numPlayers').value = "Zero";
@@ -121,6 +141,10 @@ function getSteps(){
         newDie.classList.add("text-info");
     }
 
+    showNotification("Jugador " + (turn % 2 === 0 ? "2" : "1"), steps); // Muestra la notificación
+
+
+
     turn++;   
     move(steps);
 }
@@ -154,7 +178,7 @@ function move(steps){
         if(cont > 2){
             document.getElementById(spaceBefore + 'b').innerHTML = "";
         }             
-        
+
     }else{
         jugadorImpar += steps;
 
@@ -182,7 +206,7 @@ function move(steps){
         if(cont > 1){
             document.getElementById(spaceBefore + 'a').innerHTML = "";
         }
-
+     
     }
 }
 
@@ -406,6 +430,7 @@ function rightAnswer(clue) {
         text.appendChild(nodoText);
         new_answer.appendChild(text);
         showAnswer.replaceChild(new_answer, old_answer);
+        createBootstrapNotification("Respuesta correcta", "¡Felicidades! Puedes avanzar :)", "success");
 
    
     }else  if (clue === 'vocabulary') {
@@ -507,4 +532,3 @@ function rightAnswer(clue) {
     }
 
 }
-
