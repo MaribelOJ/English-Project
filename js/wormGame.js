@@ -34,6 +34,8 @@ let jugadorPar = 0;
 let wordToTranslate;
 let EnglishWord;
 let copia = "";
+let lastMovePar =0;
+let lastMoveImpar = 0;
 
 
 function comenzar(){
@@ -42,18 +44,18 @@ function comenzar(){
 
     let iconoPawn;
     let nodoPawn ;
-    let lugar = 'a';
+    let lugar = '0a';
 
     for(let i = 1 ; i <= 2; i++){
 
         nodoPawn = document.getElementById(lugar);
-        lugar = 'b';
+        lugar = '0b';
         nodoPawn.innerHTML = "";
     }
     
 
     if(numJugadores != 0){
-        lugar = 'a';
+        lugar = '0a';
         for(let i = 1 ; i <= parseInt(numJugadores); i++){
             iconoPawn = document.createElement('i');
             iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl");
@@ -62,7 +64,7 @@ function comenzar(){
             
             if(i == 1){
                 iconoPawn.classList.add("text-info");
-                lugar = 'b';
+                lugar = '0b';
             }else if(i == 2){
                 iconoPawn.classList.add("text-success");
             }
@@ -125,11 +127,52 @@ function getSteps(){
     move(steps);
 }
 
+
 function move(steps){
-    cont++;   
-    
-    if(cont % 2 == 0){
+    cont++;
+    if(steps == '0'){
+        cont--;
+        if(cont % 2 == 0){
+
+            document.getElementById(jugadorPar + "b").innerHTML = "";
+
+            jugadorPar -= lastMovePar;
+            console.log(jugadorPar);
+
+            
+            let old_iconSpace = document.getElementById(jugadorPar + 'b');
+            let casilla = document.getElementById(""+jugadorPar+"");
+            let new_iconSpace = document.createElement('div');
+            new_iconSpace.classList.add("col-2");
+            new_iconSpace.id = jugadorPar + 'b';
+            let iconoPawn = document.createElement('i');
+            iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-success");
+            new_iconSpace.appendChild(iconoPawn);
+            casilla.replaceChild(new_iconSpace, old_iconSpace);
+            
+            
+        }else{
+            document.getElementById(jugadorImpar + "a").innerHTML = "";
+
+            jugadorImpar -= lastMoveImpar;
+            console.log(jugadorPar);
+            
+
+            let old_iconSpace = document.getElementById(jugadorImpar + 'a');
+            let casilla = document.getElementById(""+jugadorImpar+"");
+            let new_iconSpace = document.createElement('div');
+            new_iconSpace.classList.add("col-2");
+            new_iconSpace.id = jugadorImpar + 'a';
+            let iconoPawn = document.createElement('i');
+            iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-info");
+            new_iconSpace.appendChild(iconoPawn);
+            casilla.replaceChild(new_iconSpace, old_iconSpace);
+
+        }
+
+    }else if(cont % 2 == 0){
         jugadorPar += steps;
+        lastMovePar = steps;
 
         if(jugadorPar > 20){
             jugadorPar -= steps;
@@ -147,16 +190,17 @@ function move(steps){
         iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-success");
         new_iconSpace.appendChild(iconoPawn);
         casilla.replaceChild(new_iconSpace, old_iconSpace);
-        document.getElementById("b").innerHTML = "";
+
 
         let spaceBefore =jugadorPar - steps;
         
-        if(cont > 2){
-            document.getElementById(spaceBefore + 'b').innerHTML = "";
-        }             
+  
+        document.getElementById(spaceBefore + 'b').innerHTML = "";
+                    
         
     }else{
         jugadorImpar += steps;
+        lastMoveImpar = steps;
 
         if(jugadorImpar > 20){
             jugadorImpar -= steps;
@@ -175,16 +219,17 @@ function move(steps){
         iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-info");
         new_iconSpace.appendChild(iconoPawn);
         casilla.replaceChild(new_iconSpace, old_iconSpace);
-        document.getElementById("a").innerHTML = "";
+
 
         let spaceBefore =jugadorImpar - steps; 
 
-        if(cont > 1){
-            document.getElementById(spaceBefore + 'a').innerHTML = "";
-        }
+        
+        document.getElementById(spaceBefore + 'a').innerHTML = "";
+        
 
     }
 }
+
 
 
 function drill(clue){
@@ -292,7 +337,6 @@ function drill(clue){
         label2.innerHTML = answer2;
 
 
-
         let fila2 = document.createElement('div');
         fila2.classList.add('form-check');
         fila2.appendChild(opcion1);
@@ -345,7 +389,7 @@ function drill(clue){
         let input = document.createElement('input');
         input.type = "text";
         input.id = "wordInput";
-        input.placeholder = "Insert a word";
+        input.placeholder = "Ingrese una palabra";
         input.classList.add('me-3');
 
         colEntrada.appendChild(input);
@@ -430,9 +474,7 @@ function rightAnswer(clue) {
         buttonAnswer.disabled = true;
     }else if(clue == 'grammar'){
         let option = document.getElementsByName("grammar");
-        let answer= rightOption.pop();
-        console.log(answer);
-        
+        let answer= rightOption.pop();        
 
         for (var i = 0; i < option.length; i++) {
             if(option[i].checked){

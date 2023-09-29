@@ -43,9 +43,9 @@
                     <div class="row py-1 ">
                         <h1 class="mt-5">START</h1>
                     </div>
-                    <div class="row justify-content-center pe-3" id="pawns">
-                        <div class="col-2" id="a"></div>
-                        <div class="col-2" id="b"></div>
+                    <div class="row justify-content-center pe-3" id="0">
+                        <div class="col-2" id="0a"></div>
+                        <div class="col-2" id="0b"></div>
                     </div>
                 </div>
                 <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
@@ -381,7 +381,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-info" data-bs-dismiss="modal">Move Forward <i class="fa-regular fa-square-check ms-3"></i></button>
-            <button type="button" class="btn btn-danger">Stay Back<i class="fa-regular fa-circle-xmark ms-3"></i></button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="move('0')">Stay Back<i class="fa-regular fa-circle-xmark ms-3"></i></button>
             </div>
         </div>
         </div>
