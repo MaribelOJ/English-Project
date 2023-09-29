@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
+        <title>Worm Game</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="CSS/Style.css">
+        <link rel="shortcut icon" href="CSS/Worm.ico">
     </head>
   <body>
     <header class="bg-dark">
@@ -30,18 +31,18 @@
             <div class="row align-content-center justify-content-center" style="height: 170px;">
                 <div class="col-2">
                     <label for="numPlayers"> Select how many players you are: </label>
-                    <select class="form-select my-3" aria-label="Default select example" id="numPlayers">
+                    <select class="form-select  " aria-label="Default select example" id="numPlayers">
                         <option selected>Zero</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                     </select>
 
-                    <button class="btn btn-primary w-100" onclick="comenzar()" style="width: 100px;"> Start </button>
+                    <button class="btn btn-primary w-100" onclick="comenzar()" style="width: 100px; margin-top: 5px; height:50px;"> Start </button>
                 </div>
-                <div class="col-2 text-center pt-4" id="randomNum">
+                <div class="col-2 text-center pt-" id="randomNum">
 
                     <i class="fa-solid fa-dice fa-spin-pulse fs-1 pb-2" id="dadoVisto"></i>
-                    <button class="btn btn-primary w-100 mt-4" onclick="getSteps()" style="width: 100px;"> Get Steps </button>
+                    <button class="btn btn-primary w-100 mt-4" onclick="getSteps()" style="width: 100px; height:50px;"> Get Steps </button>
                 </div>
             </div>
             <div class="row justify-content-center" style="height: 150px;">
@@ -78,7 +79,7 @@
                         <div class="col-2" id="3a"></div>
                         <div class="col-2" id="3b"></div>
                     </div>
-                    <div class="row mt-3 pt-1">
+                    <div class="row ">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
@@ -172,7 +173,7 @@
                                 <div class="col-2" id="4a"></div>
                                 <div class="col-2" id="4b"></div>
                             </div>
-                            <div class="col-2 my-5">
+                            <div class="col-2 my-4">
                                 <i class="fa-regular fa-circle-check fa-l"></i>
                                 <i class="fa-regular fa-circle-xmark fa-l"></i>
                             </div>
@@ -228,7 +229,7 @@
                         <div class="col-2" id="11a"></div>
                         <div class="col-2" id="11b"></div>
                     </div>
-                    <div class="row mt-3 pt-1">
+                    <div class="row ">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
@@ -301,7 +302,7 @@
                         <div class="col-2 my-5"  onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                             <i class="fa-solid fa-book fa-xl"></i>
                         </div>
-                        <div class="col-2 my-5"  onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
+                        <div class="col-2 my-4"  onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                             <i class="fa-regular fa-circle-check fa-l"></i>
                             <i class="fa-regular fa-circle-xmark fa-l"></i>
                         </div>
@@ -357,7 +358,7 @@
                         <div class="col-2" id="19a"></div>
                         <div class="col-2" id="19b"></div>
                     </div>
-                    <div class="row mt-3 pt-1">
+                    <div class="row ">
                         <i class="fa-regular fa-circle-check fa-l"></i>
                         <i class="fa-regular fa-circle-xmark fa-l"></i>
                     </div>
