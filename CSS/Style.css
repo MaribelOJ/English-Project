@@ -28,5 +28,43 @@ i{
 .fa-xl{
     cursor: pointer;
     font-size: 30px;
-   
 }
+
+/* Estilos para centrar el mensaje de victoria */
+#victoryMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3498db;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 999;
+    display: none;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+#victoryMessage p {
+    font-size: 24px;
+    margin: 0;
+}
+
+#victoryMessage button {
+    background-color: #fff;
+    color: #3498db;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#victoryMessage button:hover {
+    background-color: #295f8f;
+    color: #fff;
+}
+

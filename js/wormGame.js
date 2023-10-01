@@ -38,6 +38,46 @@ let lastMovePar =0;
 let lastMoveImpar = 0;
 
 
+function pepe(message, backgroundColor, textColor) {
+    const notification = document.getElementById("notification");
+    notification.textContent = message;
+    notification.style.backgroundColor = backgroundColor; // Establecer el color de fondo
+    notification.style.color = textColor; // Establecer el color del texto
+    notification.style.fontSize = "24px"; // Establecer el tamaño de fuente
+
+    // Centrar la notificación
+    notification.style.position = "fixed";
+    notification.style.top = "50%";
+    notification.style.left = "50%";
+    notification.style.transform = "translate(-50%, -50%)";
+
+    notification.style.display = "block";
+
+    // Opcional: Ocultar la notificación después de unos segundos
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+}
+
+
+function createBootstrapNotification(title, message, type) {
+    const modalNotificationsDiv = document.getElementById("modalNotifications");
+
+    const notificationDiv = document.createElement("div");
+    notificationDiv.classList.add("alert", "alert-" + type);
+    notificationDiv.innerHTML = `
+        <strong>${title}</strong><br>${message}
+    `;
+
+    modalNotificationsDiv.appendChild(notificationDiv);
+
+    // Opcional: Ocultar la notificación después de unos segundos
+    setTimeout(() => {
+        notificationDiv.style.display = "none";
+    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+}
+
+
 function showNotification(playerName, steps) {
     const notificationDiv = document.getElementById("notification");
     notificationDiv.textContent = `Jugador: ${playerName}, Pasos: ${steps}`;
@@ -156,7 +196,10 @@ function move(steps){
     if(steps == '0'){
         cont--;
         if(cont % 2 == 0){
-
+            let oldIconSpace = document.getElementById(jugadorPar + "b");
+            if (oldIconSpace) {
+                oldIconSpace.innerHTML = "";
+            }
             document.getElementById(jugadorPar + "b").innerHTML = "";
 
             jugadorPar -= lastMovePar;
@@ -175,6 +218,10 @@ function move(steps){
             
             
         }else{
+            let oldIconSpace = document.getElementById(jugadorImpar + "a");
+            if (oldIconSpace) {
+                oldIconSpace.innerHTML = "";
+            }
             document.getElementById(jugadorImpar + "a").innerHTML = "";
 
             jugadorImpar -= lastMoveImpar;
@@ -197,11 +244,14 @@ function move(steps){
         jugadorPar += steps;
         lastMovePar = steps;
 
-        if(jugadorPar > 20){
+        if (jugadorPar > 20) {
             jugadorPar -= steps;
-            alert("the die number exceeds the number of steps missing to the end, try again in another turn!");
-        }else if(jugadorImpar == 20){
-            alert("Congratulations, you are the winner!");
+            pepe("the die number exceeds the number of steps remaining to the end, try again in another turn!");
+            
+        } else if (jugadorPar == 20) {
+            document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 2 es el ganador!";
+            document.getElementById("victoryMessage").style.display = "block";
+            document.getElementById("victorySound").play(); // Reproducir sonido de victoria
         }
 
         let old_iconSpace = document.getElementById(jugadorPar + 'b');
@@ -225,11 +275,13 @@ function move(steps){
         jugadorImpar += steps;
         lastMoveImpar = steps;
 
-        if(jugadorImpar > 20){
+        if (jugadorImpar > 20) {
             jugadorImpar -= steps;
-            alert("the die number exceeds the number of steps missing to the end, try again in another turn!");
-        }else if(jugadorImpar == 20){
-            alert("Congratulations, you are the winner!");
+            pepe("the die number exceeds the number of steps remaining to the end, try again in another turn!")
+        } else if (jugadorImpar == 20) {
+            document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 1 es el ganador!";
+            document.getElementById("victoryMessage").style.display = "block";
+            document.getElementById("victorySound").play(); // Reproducir sonido de victoria
         }
 
 
@@ -247,7 +299,7 @@ function move(steps){
         let spaceBefore =jugadorImpar - steps; 
 
         
-        document.getElementById(spaceBefore + 'a').innerHTML = "";
+        document.getElementById(spaceBefore + 'a').innerHTML = ""; 
         
 
     }
@@ -473,7 +525,6 @@ function rightAnswer(clue) {
         text.appendChild(nodoText);
         new_answer.appendChild(text);
         showAnswer.replaceChild(new_answer, old_answer);
-        createBootstrapNotification("Respuesta correcta", "¡Felicidades! Puedes avanzar :)", "success");
 
    
     }else  if (clue === 'vocabulary') {
@@ -485,10 +536,10 @@ function rightAnswer(clue) {
 
         if (playerAnswer === EnglishWord) {
             // Respuesta correcta
-            alert('Felicidades! PUEDES AVANZAR :)');
+            createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
         } else {
             // Respuesta incorrecta
-            alert('Incorrecto. La respuesta correcta es "' + EnglishWord + '".NO PUEDES AVANZAR!');
+            createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "success");
         }
 
         // Limpia el campo de entrada
@@ -497,31 +548,28 @@ function rightAnswer(clue) {
         inputField.disabled = true;
         buttonAnswer.disabled = true;
     }else if(clue == 'grammar'){
-        let option = document.getElementsByName("grammar");
-        let answer= rightOption.pop();        
-
-        for (var i = 0; i < option.length; i++) {
-            if(option[i].checked){
-                let radio = option[i];
-                let valorOption = radio.value;
-                
-                console.log(valorOption);
-       
-                if(valorOption == answer && copia == ""){
-                    alert('Felicidades! PUEDES AVANZAR :)');
-                }else if(valorOption != answer && copia == ""){
-                    alert('NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!');
-                    copia = valorOption;
-                }else{
-                    alert('RESPUESTA SIN REGISTRAR');
-                    rightOption.push(answer);
-                    copia = "";
+            let option = document.getElementsByName("grammar");
+            let answer = rightOption.pop();
+            let selectedOption = false;
+    
+            for (var i = 0; i < option.length; i++) {
+                if (option[i].checked) {
+                    let radio = option[i];
+                    let valorOption = radio.value;
+    
+                    if (valorOption == answer) {
+                        createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
+                    } else {
+                        createBootstrapNotification("Que mal :C", "NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!", "success");
+                    }
+                    selectedOption = true;
+                    break;
                 }
-                break;
             }
-        } 
-
-
+    
+            if (!selectedOption) {
+                createBootstrapNotification("Respuesta sin registrar", "Debes seleccionar una opción", "info");                rightOption.push(answer);
+            }
     }else if(clue == 'listening'){
         
         event.preventDefault(); 
@@ -535,7 +583,8 @@ function rightAnswer(clue) {
             document.getElementById("attempts").textContent = attempts;
             usedWords.add(wordInput);
 
-            alert("Ganaste un punto, no repitas la palabra.");
+            createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "success");
+
 
             if(attempts == 0 && score < 5){
                 document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, NO PUEDES AVANZAR! :/";
@@ -571,5 +620,10 @@ function rightAnswer(clue) {
         }
 
     }
+    indiceVideos++; 
 
+    if (indiceVideos >= videosLinks.length) {
+        indiceVideos = 0;
+    }
 }
+
