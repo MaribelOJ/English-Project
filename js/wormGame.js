@@ -540,7 +540,7 @@ function rightAnswer(clue) {
             createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
         } else {
             // Respuesta incorrecta
-            createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "success");
+            createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "danger");
         }
 
         // Limpia el campo de entrada
@@ -561,7 +561,7 @@ function rightAnswer(clue) {
                     if (valorOption == answer) {
                         createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
                     } else {
-                        createBootstrapNotification("Que mal :C", "NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!", "success");
+                        createBootstrapNotification("Que mal :C", "NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!", "danger");
                     }
                     selectedOption = true;
                     break;
@@ -580,7 +580,7 @@ function rightAnswer(clue) {
             score++;
             usedWords.add(wordInput);
             document.getElementById("score").textContent = score;
-            createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "success");
+            createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "info");
 
         }
     

@@ -130,7 +130,10 @@ body {
 
 /* Agrega la imagen de la lombriz como fondo del área de scroll */
 body {
-    background-image: url('../Ico/lombriz\ profesor\ enseñando\ ingles.jpg');
+    background-image: linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.7)),
+        url('../Ico/lombriz\ profesor\ enseñando\ ingles.jpg');
     background-size: 100% auto; /* Ancho completo y altura automática */
     background-repeat: no-repeat;
 }
