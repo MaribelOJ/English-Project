@@ -38,7 +38,7 @@
 
         <div class="container-fluid mb-5">
             <div class="row align-content-center justify-content-center" style="height: 170px;">
-                <div class="col-2">
+                <div class="col-2 start">
                     <label for="numPlayers"> Select how many players you are: </label>
                     <select class="form-select  " aria-label="Default select example" id="numPlayers">
                         <option selected>Zero</option>
@@ -46,28 +46,28 @@
                         <option value="2">Two</option>
                     </select>
 
-                    <button class="btn btn-primary w-100" onclick="comenzar()" style="width: 100px; margin-top: 30px; height:50px;"> Start </button>
+                    <button class="btn btn-primary w-100" onclick="comenzar()" style="width: 100px; margin-top: 20px; height:50px;"> Start </button>
                 </div>
-                <div class="col-2 text-center pt-" id="randomNum">
-
+                <div class="col-2 text-center dado" id="randomNum" style="position: fixed; top: px; right:10px;">
                     <i class="fa-solid fa-dice fa-spin-pulse fs-1 pb-2" id="dadoVisto"></i>
-                    <button class="btn btn-primary w-100 mt-4" onclick="getSteps()" style="width: 100px; height:50px; margin-top: 30px; " > Get Steps </button>
+                    <button class="btn btn-warning w-100 mt-3" onclick="getSteps()" style="height: 50px;">Get Steps</button>
                 </div>
+                
             </div>
             <div class="row justify-content-center" style="height: 150px;">
-                <div class="col-2 bg-white border border-dark rounded-start-pill text-center">
+                <div class="col-2 casillas bg-white border border-dark rounded-start-pill text-center">
                     <div class="row py-1 ">
                         <h1 class="mt-5">START</h1>
                     </div>
                     <div class="row justify-content-center pe-3" id="0">
-                        <div class="col-2" id="0a"></div>
-                        <div class="col-2" id="0b"></div>
+                        <div class="col-2 casillas" id="0a"></div>
+                        <div class="col-2 casillas" id="0b"></div>
                     </div>
                 </div>
                 <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                     <div class="row justify-content-center py-1" id="1">
-                        <div class="col-2" id="1a"></div>
-                        <div class="col-2" id="1b"></div>
+                        <div class="col-2 casillas" id="1a"></div>
+                        <div class="col-2 casillas" id="1b"></div>
                     </div>
                     <div class="row mt-3 pt-1">
                         <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-2 bg-danger pt-5 text-center" id="pepe" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                     <div class="row justify-content-center py-1" id="2">
-                        <div class="col-2" id="2a"></div>
+                        <div class="col-2 casillas" id="2a"></div>
                         <div class="col-2" id="2b"></div>
                     </div>
                     <div class="row mt-3 pt-1">
@@ -423,6 +423,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="js/wormGame.js"></script>
-    <script src="js/steps.js"></script>
   </body>
 </html>

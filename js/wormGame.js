@@ -511,6 +511,7 @@ function drill(clue){
 }
 
 
+
 function rightAnswer(clue) {
 
     if(clue == 'spelling'){
@@ -571,59 +572,51 @@ function rightAnswer(clue) {
                 createBootstrapNotification("Respuesta sin registrar", "Debes seleccionar una opción", "info");                rightOption.push(answer);
             }
     }else if(clue == 'listening'){
-        
-        event.preventDefault(); 
-
+        event.preventDefault();
+    
         const wordInput = document.getElementById("wordInput").value.trim().toLowerCase();
-
+    
         if (videosWords[indiceListening].includes(wordInput) && !usedWords.has(wordInput)) {
             score++;
-            attempts--;
-            document.getElementById("score").textContent = score;
-            document.getElementById("attempts").textContent = attempts;
             usedWords.add(wordInput);
-
+            document.getElementById("score").textContent = score;
             createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "success");
 
-
-            if(attempts == 0 && score < 5){
-                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, NO PUEDES AVANZAR! :/";
-
-                
-            }else if(score == 5){
-                document.getElementById('answerRequest').textContent = "Ingresaste las 5 palabras correctamente, PUEDES AVANZAR! :)";
-                indiceListening++;
-                indiceVideos++;
-                attempts = 0;                            
-            }       
-            
-        }else{
-            attempts--;
-            document.getElementById("attempts").textContent = attempts;
-            
-            if(attempts == 0 && score < 5){
-                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles, NO PUEDES AVANZAR! :/";
-            }else if(score >= 5){
-                document.getElementById('answerRequest').textContent = "Ingresaste las 5 palabras correctamente, PUEDES AVANZAR! :)";
-                indiceListening++;
-                indiceVideos++;
-                attempts = 0;
-            }
         }
-
-        document.getElementById('wordInput').value ="";   
-
-        if(attempts == 0){
-            document.getElementById('pregunta').innerHTML="";
+    
+        attempts--;
+    
+        if (attempts <= 0) {
+            if (score >= 5) {
+                // El jugador adivinó al menos 5 palabras correctamente y puede avanzar
+                document.getElementById('answerRequest').textContent = "Ingresaste al menos 5 palabras correctamente, PUEDES AVANZAR! :)";
+                
+            } else {
+                // El jugador no adivinó al menos 5 palabras correctamente, no puede avanzar
+                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles y no adivinaste al menos 5 palabras correctamente, NO PUEDES AVANZAR! :/";
+            }
+            attempts = 0;
+            indiceVideos++; 
+            indiceListening++;
+        } else {
+            document.getElementById("attempts").textContent = attempts;
+        }
+    
+        document.getElementById('wordInput').value = "";
+    
+        if (attempts <= 0 || indiceListening >= videosLinks.length) {
+            document.getElementById('pregunta').innerHTML = "";
             score = 0;
             attempts = 7;
+            if (indiceListening >= videosLinks.length) {
+                indiceListening = 0;
+            }
         }
-
     }
-    indiceVideos++; 
+    
 
     if (indiceVideos >= videosLinks.length) {
-        indiceVideos = 0;
+        indiceVideos=0;
     }
 }
 

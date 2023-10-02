@@ -68,3 +68,56 @@ i{
     color: #fff;
 }
 
+/* Estilos para el contenedor del dado fijo */
+.dado {
+    position: fixed;
+    bottom: 55%; /* Ajusta la distancia desde la parte inferior */
+    right: 20px;  /* Ajusta la distancia desde la derecha */
+    z-index: 999; /* Ajusta el z-index para que esté por encima del contenido */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#dadoVisto {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Tarjetas de juego */
+.start {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 300px;
+}
+
+/* Modal de ejercicios */
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-body {
+    background-color: #fff;
+}
+
+.modal-footer {
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+}
