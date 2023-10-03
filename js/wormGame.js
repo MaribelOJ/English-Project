@@ -54,9 +54,16 @@ function pepe(message, backgroundColor, textColor) {
     notification.style.display = "block";
 
     // Opcional: Ocultar la notificación después de unos segundos
-    setTimeout(() => {
-        notification.style.display = "none";
-    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+    if(backgroundColor == 'bg-warning'){
+        setTimeout(() => {
+            notification.style.display = "none";
+        }, 15000); // Oculta la notificación después de 15 segundos (5000 milisegundos)
+    }else{
+        setTimeout(() => {
+            notification.style.display = "none";
+        }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+    }
+    
 }
 
 
@@ -246,7 +253,7 @@ function move(steps){
 
         if (jugadorPar > 20) {
             jugadorPar -= steps;
-            pepe("the die number exceeds the number of steps remaining to the end, try again in another turn!");
+            pepe("It exceeds the remaining steps to the end, try again in another turn!","bg-warning");
             
         } else if (jugadorPar == 20) {
             document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 2 es el ganador!";
@@ -277,7 +284,7 @@ function move(steps){
 
         if (jugadorImpar > 20) {
             jugadorImpar -= steps;
-            pepe("the die number exceeds the number of steps remaining to the end, try again in another turn!")
+            pepe("It exceeds the remaining steps to the end, try again in another turn!","bg-warning");
         } else if (jugadorImpar == 20) {
             document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 1 es el ganador!";
             document.getElementById("victoryMessage").style.display = "block";
@@ -296,7 +303,7 @@ function move(steps){
         casilla.replaceChild(new_iconSpace, old_iconSpace);
 
 
-        let spaceBefore =jugadorImpar - steps; 
+        let spaceBefore = jugadorImpar - steps; 
 
         
         document.getElementById(spaceBefore + 'a').innerHTML = ""; 
@@ -589,7 +596,7 @@ function rightAnswer(clue) {
         if (attempts <= 0) {
             if (score >= 5) {
                 // El jugador adivinó al menos 5 palabras correctamente y puede avanzar
-                document.getElementById('answerRequest').textContent = "Ingresaste al menos 5 palabras correctamente, PUEDES AVANZAR! :)";
+                document.getElementById('answerRequest').textContent = "Ingresaste 5 palabras correctamente, PUEDES AVANZAR! :)";
                 
             } else {
                 // El jugador no adivinó al menos 5 palabras correctamente, no puede avanzar
@@ -600,6 +607,12 @@ function rightAnswer(clue) {
             indiceListening++;
         } else {
             document.getElementById("attempts").textContent = attempts;
+
+            if (score >= 5) {
+                // El jugador adivinó al menos 5 palabras correctamente y puede avanzar
+                document.getElementById('answerRequest').textContent = "Ingresaste 5 palabras correctamente, PUEDES AVANZAR! :)";
+                
+            }
         }
     
         document.getElementById('wordInput').value = "";
