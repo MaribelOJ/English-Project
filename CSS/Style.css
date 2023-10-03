@@ -46,6 +46,7 @@
 #victoryMessage p {
     font-size: 24px;
     margin: 0;
+    z-index: 999;
 }
 
 #victoryMessage button {

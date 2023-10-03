@@ -24,13 +24,13 @@
     <main>
         <!-- Alerta cuando agarra pasos -->
        
-        <div id="notification" class="alert alert-info" style="display: none;"></div>
+        <div id="notification" class="alert alert-info" style="display: none; z-index: 999;"></div>
 
-        <div id="victoryMessage" class="hidden">
+        <div id="victoryMessage" class="hidden" style="z-index: 999;">
             <p id="victoryText"></p>
         </div>
 
-        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="notification" style="display: none;">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="notification" style="display: none; z-index: 999;">
             The die number exceeds the number of steps remaining to the end, try again in another turn!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
