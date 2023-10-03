@@ -39,7 +39,7 @@ let lastMoveImpar = 0;
 
 
 function pepe(message, backgroundColor, textColor) {
-    const notification = document.getElementById("notification");
+    const notification = document.getElementById("notification2");
     notification.textContent = message;
     notification.style.backgroundColor = backgroundColor; // Establecer el color de fondo
     notification.style.color = textColor; // Establecer el color del texto
@@ -54,15 +54,11 @@ function pepe(message, backgroundColor, textColor) {
     notification.style.display = "block";
 
     // Opcional: Ocultar la notificación después de unos segundos
-    if(backgroundColor == 'bg-warning'){
-        setTimeout(() => {
-            notification.style.display = "none";
-        }, 15000); // Oculta la notificación después de 15 segundos (5000 milisegundos)
-    }else{
-        setTimeout(() => {
-            notification.style.display = "none";
-        }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
-    }
+
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 15000); // Oculta la notificación después de 15 segundos (15000 milisegundos)
+    
     
 }
 
@@ -81,7 +77,7 @@ function createBootstrapNotification(title, message, type) {
     // Opcional: Ocultar la notificación después de unos segundos
     setTimeout(() => {
         notificationDiv.style.display = "none";
-    }, 5000); // Oculta la notificación después de 5 segundos (5000 milisegundos)
+    }, 3000); // Oculta la notificación después de 3 segundos (3000 milisegundos)
 }
 
 
@@ -253,7 +249,7 @@ function move(steps){
 
         if (jugadorPar > 20) {
             jugadorPar -= steps;
-            pepe("It exceeds the remaining steps to the end, try again in another turn!","bg-warning");
+            pepe("It exceeds the remaining steps to the end, try again in another turn!");
             
         } else if (jugadorPar == 20) {
             document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 2 es el ganador!";
@@ -284,7 +280,7 @@ function move(steps){
 
         if (jugadorImpar > 20) {
             jugadorImpar -= steps;
-            pepe("It exceeds the remaining steps to the end, try again in another turn!","bg-warning");
+            pepe("It exceeds the remaining steps to the end, try again in another turn!");
         } else if (jugadorImpar == 20) {
             document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 1 es el ganador!";
             document.getElementById("victoryMessage").style.display = "block";
