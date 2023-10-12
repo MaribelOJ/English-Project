@@ -63,7 +63,7 @@ function pepe(message, backgroundColor, textColor) {
 }
 
 
-function createBootstrapNotification(title, message, type) {
+function createBootstrapNotification(title, message, type,time) {
     const modalNotificationsDiv = document.getElementById("modalNotifications");
 
     const notificationDiv = document.createElement("div");
@@ -77,7 +77,7 @@ function createBootstrapNotification(title, message, type) {
     // Opcional: Ocultar la notificación después de unos segundos
     setTimeout(() => {
         notificationDiv.style.display = "none";
-    }, 3000); // Oculta la notificación después de 3 segundos (3000 milisegundos)
+    }, time); // Oculta la notificación después del tiempo enviado
 }
 
 
@@ -557,10 +557,10 @@ function rightAnswer(clue) {
 
         if (playerAnswer === EnglishWord) {
             // Respuesta correcta
-            createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
+            createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success",5000);
         } else {
             // Respuesta incorrecta
-            createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "danger");
+            createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "danger", 5000);
         }
 
         // Limpia el campo de entrada
@@ -579,9 +579,9 @@ function rightAnswer(clue) {
                     let valorOption = radio.value;
     
                     if (valorOption == answer) {
-                        createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success");
+                        createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success",5000);
                     } else {
-                        createBootstrapNotification("Que mal :C", "NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!", "danger");
+                        createBootstrapNotification("Que mal :C", "NO PUEDES AVANZAR, NI CAMBIAR TU RESPUESTA!", "danger", 5000);
                     }
                     selectedOption = true;
                     break;
@@ -600,7 +600,7 @@ function rightAnswer(clue) {
             score++;
             usedWords.add(wordInput);
             document.getElementById("score").textContent = score;
-            createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "info");
+            createBootstrapNotification("Ganaste un punto", "No repitas la palabra.", "info", 2000);
 
         }
     
@@ -609,22 +609,24 @@ function rightAnswer(clue) {
         if (attempts <= 0) {
             if (score >= 5) {
                 // El jugador adivinó al menos 5 palabras correctamente y puede avanzar
-                document.getElementById('answerRequest').textContent = "Ingresaste 5 palabras correctamente, PUEDES AVANZAR! :)";
+                createBootstrapNotification("PUEDES AVANZAR :)", " Ingresaste 5 palabras correctamente", "success", 5000);
+                
                 
             } else {
                 // El jugador no adivinó al menos 5 palabras correctamente, no puede avanzar
-                document.getElementById('answerRequest').textContent = "No tienes más intentos disponibles y no adivinaste al menos 5 palabras correctamente, NO PUEDES AVANZAR! :/";
+                createBootstrapNotification("NO PUEDES AVANZAR! :/", "No tienes más intentos disponibles y no ingresaste al menos 5 palabras correctamente", "danger",5000);
+                
             }
             attempts = 0;
             indiceVideos++; 
             indiceListening++;
-        } else {
+        } else{
             document.getElementById("attempts").textContent = attempts;
 
             if (score >= 5) {
                 // El jugador adivinó al menos 5 palabras correctamente y puede avanzar
-                document.getElementById('answerRequest').textContent = "Ingresaste 5 palabras correctamente, PUEDES AVANZAR! :)";
-                
+                createBootstrapNotification("PUEDES AVANZAR :)", " Ingresaste 5 palabras correctamente", "success", 5000);
+                // document.getElementById('answerRequest').textContent = "Ingresaste 5 palabras correctamente, PUEDES AVANZAR! :)";    
             }
         }
     
