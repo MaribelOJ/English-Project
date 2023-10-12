@@ -193,18 +193,65 @@ function getSteps(){
     move(steps);
 }
 
+function pasosJugador1(i,jugadorImpar,time){
+    i++;
+
+    if(i <= jugadorImpar){
+
+        setTimeout(function (){
+
+            let old_iconSpace = document.getElementById(i + 'a');
+            let casilla = document.getElementById(""+i+"");
+            let new_iconSpace = document.createElement('div');
+            new_iconSpace.classList.add("col-2");
+            new_iconSpace.id = i + 'a';
+            let iconoPawn = document.createElement('i');
+            iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-info");
+            new_iconSpace.appendChild(iconoPawn);
+            
+            casilla.replaceChild(new_iconSpace, old_iconSpace);
+            
+            let casillaAnterior = i - 1;
+            document.getElementById(casillaAnterior + 'a').innerHTML = ""; 
+            pasosJugador1(i,jugadorImpar,time);
+        },time); 
+    }
+}
+
+function pasosJugador2(i,jugadorPar,time){
+    i++;
+
+    if(i <= jugadorPar){
+
+        setTimeout(function (){
+            let old_iconSpace = document.getElementById(i + 'b');
+            let casilla = document.getElementById(""+i+"");
+            let new_iconSpace = document.createElement('div');
+            new_iconSpace.classList.add("col-2");
+            new_iconSpace.id = i + 'b';
+            let iconoPawn = document.createElement('i');
+            iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-success");
+            new_iconSpace.appendChild(iconoPawn);
+            casilla.replaceChild(new_iconSpace, old_iconSpace);
+
+            let Anterior = i - 1; 
+            document.getElementById(Anterior + 'b').innerHTML = "";
+
+            pasosJugador2(i,jugadorPar,time);
+
+        }, time);
+    }
+}
+
 
 function move(steps){
     cont++;
     if(steps == '0'){
         cont--;
         if(cont % 2 == 0){
-            let oldIconSpace = document.getElementById(jugadorPar + "b");
-            if (oldIconSpace) {
-                oldIconSpace.innerHTML = "";
-            }
-            document.getElementById(jugadorPar + "b").innerHTML = "";
+            let wrongAnswerSpace = document.getElementById(jugadorPar + "b");
 
+            wrongAnswerSpace.innerHTML = "";
             jugadorPar -= lastMovePar;
             console.log(jugadorPar);
 
@@ -221,14 +268,12 @@ function move(steps){
             
             
         }else{
-            let oldIconSpace = document.getElementById(jugadorImpar + "a");
-            if (oldIconSpace) {
-                oldIconSpace.innerHTML = "";
-            }
-            document.getElementById(jugadorImpar + "a").innerHTML = "";
+            let wrongAnswerSpace = document.getElementById(jugadorImpar + "a");
+
+            wrongAnswerSpace.innerHTML = "";
 
             jugadorImpar -= lastMoveImpar;
-            console.log(jugadorPar);
+            console.log(jugadorImpar);
             
 
             let old_iconSpace = document.getElementById(jugadorImpar + 'a');
@@ -246,37 +291,25 @@ function move(steps){
     }else if(cont % 2 == 0){
         jugadorPar += steps;
         lastMovePar = steps;
+        let spaceBefore =jugadorPar - steps;
 
         if (jugadorPar > 20) {
             jugadorPar -= steps;
             pepe("It exceeds the remaining steps to the end, try again in another turn!");
             
-        } else if (jugadorPar == 20) {
+        }else if (jugadorPar == 20) {
             document.getElementById("victoryText").textContent = "¡Felicidades, el Jugador 2 es el ganador!";
             document.getElementById("victoryMessage").style.display = "block";
             document.getElementById("victorySound").play(); // Reproducir sonido de victoria
         }
 
-        let old_iconSpace = document.getElementById(jugadorPar + 'b');
-        let casilla = document.getElementById(""+jugadorPar+"");
-        let new_iconSpace = document.createElement('div');
-        new_iconSpace.classList.add("col-2");
-        new_iconSpace.id = jugadorPar + 'b';
-        let iconoPawn = document.createElement('i');
-        iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-success");
-        new_iconSpace.appendChild(iconoPawn);
-        casilla.replaceChild(new_iconSpace, old_iconSpace);
-
-
-        let spaceBefore =jugadorPar - steps;
-        
-  
-        document.getElementById(spaceBefore + 'b').innerHTML = "";
+        pasosJugador2(spaceBefore, jugadorPar, 500);
                     
         
     }else{
         jugadorImpar += steps;
         lastMoveImpar = steps;
+        let spaceBefore = jugadorImpar - steps; 
 
         if (jugadorImpar > 20) {
             jugadorImpar -= steps;
@@ -287,24 +320,8 @@ function move(steps){
             document.getElementById("victorySound").play(); // Reproducir sonido de victoria
         }
 
-
-        let old_iconSpace = document.getElementById(jugadorImpar + 'a');
-        let casilla = document.getElementById(""+jugadorImpar+"");
-        let new_iconSpace = document.createElement('div');
-        new_iconSpace.classList.add("col-2");
-        new_iconSpace.id = jugadorImpar + 'a';
-        let iconoPawn = document.createElement('i');
-        iconoPawn.classList.add("fa-solid", "fa-chess-pawn", "fa-2xl", "text-info");
-        new_iconSpace.appendChild(iconoPawn);
-        casilla.replaceChild(new_iconSpace, old_iconSpace);
-
-
-        let spaceBefore = jugadorImpar - steps; 
-
+        pasosJugador1(spaceBefore, jugadorImpar, 500);
         
-        document.getElementById(spaceBefore + 'a').innerHTML = ""; 
-        
-
     }
 }
 
