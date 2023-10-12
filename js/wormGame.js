@@ -526,6 +526,8 @@ function drill(clue){
         Outcome.appendChild(nodoOutcome);
         
         results.replaceChild(Outcome, buttonAnswer);
+
+        indiceVideos++;
         
     }
 }
