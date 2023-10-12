@@ -526,8 +526,6 @@ function drill(clue){
         Outcome.appendChild(nodoOutcome);
         
         results.replaceChild(Outcome, buttonAnswer);
-
-        indiceVideos++;
         
     }
 }
@@ -619,9 +617,7 @@ function rightAnswer(clue) {
                 createBootstrapNotification("NO PUEDES AVANZAR! :/", "No tienes más intentos disponibles y no ingresaste al menos 5 palabras correctamente", "danger",5000);
                 
             }
-            attempts = 0;
-            indiceVideos++; 
-            indiceListening++;
+            
         } else{
             document.getElementById("attempts").textContent = attempts;
 
@@ -634,12 +630,16 @@ function rightAnswer(clue) {
     
         document.getElementById('wordInput').value = "";
     
-        if (attempts <= 0 || indiceListening >= videosLinks.length) {
+        if (attempts <= 0|| score == 5 || indiceVideos >= videosLinks.length) {
             document.getElementById('pregunta').innerHTML = "";
             score = 0;
             attempts = 7;
-            if (indiceListening >= videosLinks.length) {
+            indiceVideos++; 
+            indiceListening++;
+
+            if (indiceVideos >= videosLinks.length) {
                 indiceListening = 0;
+                indiceVideos = 0;
             }
         }
     }
