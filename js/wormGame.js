@@ -589,7 +589,7 @@ function rightAnswer(clue) {
             }
     
             if (!selectedOption) {
-                createBootstrapNotification("Respuesta sin registrar", "Debes seleccionar una opción", "info");                rightOption.push(answer);
+                createBootstrapNotification("Respuesta sin registrar", "Debes seleccionar una opción", "info", 5000);                rightOption.push(answer);
             }
     }else if(clue == 'listening'){
         event.preventDefault();
