@@ -1,0 +1,30 @@
+<!-- ... (tu código HTML) -->
+
+<select class="form-select playas" aria-label="Default select example" id="numPlayers">
+    <option selected>Zero</option>
+    <option value="2">Two</option>
+</select>
+
+<button id="startButton" onclick="comenzar()" class="btn btn-primary w-100" style="width: 100px; margin-top: 20px; height: 50px;">Start</button>
+
+<button id="getStepsButton" class="btn btn-warning w-100 mt-3" onclick="getSteps()" style="height: 50px;" disabled>Get Steps</button>
+
+<!-- ... (tu código HTML) -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var numPlayersSelect = document.getElementById("numPlayers"); // Usar getElementById para seleccionar por ID
+    var getStepsButton = document.getElementById("getStepsButton");
+    var startButton = document.getElementById("startButton");
+
+    numPlayersSelect.addEventListener("change", function() {
+        if (numPlayersSelect.value === "2") {
+            getStepsButton.removeAttribute("disabled");
+        } else {
+            getStepsButton.setAttribute("disabled", "disabled");
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -102,6 +102,8 @@ function showNotification(playerName, steps) {
 
 
 function comenzar(){
+    console.log("comenzar() se está ejecutando.");
+    
     let numJugadores = document.getElementById('numPlayers').value;
     document.getElementById('numPlayers').value = "Zero";
 
@@ -322,6 +324,12 @@ function move(steps){
 
         pasosJugador1(spaceBefore, jugadorImpar, 500);
         
+    }
+
+    if (jugadorImpar == 20 || jugadorPar == 20) {
+        document.getElementById("victoryButton").style.display = "block";
+        document.getElementById("comenzarButton").style.display = "none"; // Suponiendo que el botón de comenzar tiene el id "comenzarButton"
+        document.getElementById("randomNum").style.display = "none"; // Suponiendo que el elemento que muestra el dado tiene el id "randomNum"
     }
 }
 
@@ -650,3 +658,20 @@ function rightAnswer(clue) {
     }
 }
 
+document.getElementById("victoryButton").addEventListener("click", function() {
+    location.reload(); // Esto recargará la página y reiniciará el juego
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var numPlayersSelect = document.getElementById("numPlayers"); // Usar getElementById para seleccionar por ID
+    var getStepsButton = document.getElementById("getStepsButton");
+    var startButton = document.getElementById("startButton");
+
+    numPlayersSelect.addEventListener("change", function() {
+        if (numPlayersSelect.value === "2") {
+            getStepsButton.removeAttribute("disabled");
+        } else {
+            getStepsButton.setAttribute("disabled", "disabled");
+        }
+    });
+});
