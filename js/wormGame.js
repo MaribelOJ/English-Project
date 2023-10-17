@@ -63,6 +63,7 @@ function pepe(message, backgroundColor, textColor) {
 }
 
 
+
 function createBootstrapNotification(title, message, type,time) {
     const modalNotificationsDiv = document.getElementById("modalNotifications");
 
@@ -566,9 +567,11 @@ function rightAnswer(clue) {
         if (playerAnswer === EnglishWord) {
             // Respuesta correcta
             createBootstrapNotification("Felicidades!", "PUEDES AVANZAR :)", "success",5000);
+            vocabulary++;
         } else {
             // Respuesta incorrecta
             createBootstrapNotification("Incorrecto", "       La respuesta correcta es: " + EnglishWord + ' NO PUEDES AVANZAR! ', "danger", 5000);
+            vocabulary++;
         }
 
         // Limpia el campo de entrada
@@ -656,6 +659,7 @@ function rightAnswer(clue) {
     if (indiceVideos >= videosLinks.length) {
         indiceVideos=0;
     }
+    document.getElementById('checkAnswerButton').disabled = true;
 }
 
 document.getElementById("victoryButton").addEventListener("click", function() {
