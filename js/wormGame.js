@@ -1,7 +1,29 @@
 const palabrasTospell = ['ROUGH', 'JOKE', 'STRAWBERRY', 'WATERMELON', 'NAPKIN', 'EXAM', 'GUEST', 'ZUCCHINI', 'WATER', 'JULY'];
-const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/'];
-const vocabulary = ['CEJAS', 'SACAPUNTAS', 'TRECE','RELOJ DE PARED','QUESO','IGLESIA','CARTUCHERA','FÁCIL','SEDIENTO', 'CUELLO', 'TABLERO', 'MORADO', 'PASTEL', 'DIENTES', 'HAMBRIENTO','CEREZA','MARRÓN','BIBLIOTECA'];
-const translation = ['eyebrows', 'sharpener','thirteen','clock','cheese','church','pencil case','easy', 'thirsty','neck','board','purple','cake','teeth','hungry','cherry','brown','library'];
+const spelling = ['/AR/ - /OU/ - /IU/ - /YI/ - /EICH/', '/YEI/ - /OU/ - /KEI/ - /I/', '/ES/ - /TI/ - /AR/ - /DABLIU/ - /BI/ - /I/ - /AR/ - /AR/ - /WAY/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/ - /EM/ - /I/ - /EL/ - /OU/ - /EN/', '/EN/ - /EI/ - /PI/ - /KEY/ - /AI/ - /EN/',  ' /I/ - /EKS/ - /AI/ - /EM/]', '/YI/ - /IU/ - /I/ - /ES/ - /TI/', '/ZI/ - /IU/ - /CI/ - /CI/ - /EICH/ - /AI/ - /EN/ - /AI/', '/DABLIU/ - /EI/ - /TI/ - /I/ - /AR/', '/YEI/ - /IU/ - /EL/ - /WAY/',];
+const vocabulary = [
+    'GATO', 'PERRO', 'CASA', 'ÁRBOL', 'MONTAÑA', 'RÍO', 'SOL', 'LUNA', 'ESTRELLA', 'AGUA',
+    'FUEGO', 'AIRE', 'TIERRA', 'MUNDO', 'AMIGO', 'FAMILIA', 'COCINA', 'MESA', 'SILLA', 'CAMA',
+    'PUERTA', 'VENTANA', 'COCHE', 'MOTO', 'TREN', 'AVIÓN', 'BARCO', 'PEZ', 'FLOR', 'FRUTA',
+    'LIBRO', 'CUADERNO', 'PLUMA', 'LÁPIZ', 'TELÉFONO', 'ORDENADOR', 'PAPEL', 'CARTA', 'FOTO', 'MÚSICA',
+    'BAILE', 'CANTO', 'PINTURA', 'CINE', 'TEATRO', 'DEPORTE', 'JUEGO', 'TRABAJO', 'ESCUELA', 'UNIVERSIDAD',
+    'IDIOMA', 'CIUDAD', 'PAÍS', 'CONTINENTE', 'OCÉANO', 'MONTAÑA', 'RÍO', 'LAGO', 'BOSQUE', 'DESIERTO',
+    'INVIERNO', 'VERANO', 'OTOÑO', 'PRIMAVERA', 'CIELO', 'NOCHE', 'DÍA', 'MANO', 'PIE', 'NARIZ',
+    'BOCA', 'OÍDO', 'OJO', 'CABELLO', 'ROPA', 'ZAPATOS', 'SOMBRERO', 'RELOJ', 'BOLSA', 'DINERO',
+    'COMIDA', 'BEBIDA', 'POSTRE', 'COCINERO', 'CAMARERO', 'DOCTOR', 'ENFERMERA', 'POLICÍA', 'BOMBERO', 'PROFESOR',
+    'ESTUDIANTE', 'ARTISTA', 'MÚSICO', 'ACTOR', 'ESCRITOR', 'PINTOR', 'HISTORIA', 'CIENCIA', 'MATEMÁTICAS', 'LENGUAJE'
+];
+const translation = [
+    'cat', 'dog', 'house', 'tree', 'mountain', 'river', 'sun', 'moon', 'star', 'water',
+    'fire', 'air', 'earth', 'world', 'friend', 'family', 'kitchen', 'table', 'chair', 'bed',
+    'door', 'window', 'car', 'motorcycle', 'train', 'airplane', 'boat', 'fish', 'flower', 'fruit',
+    'book', 'notebook', 'pen', 'pencil', 'phone', 'computer', 'paper', 'letter', 'photo', 'music',
+    'dance', 'song', 'painting', 'movie', 'theater', 'sport', 'game', 'job', 'school', 'university',
+    'language', 'city', 'country', 'continent', 'ocean', 'mountain', 'river', 'lake', 'forest', 'desert',
+    'winter', 'summer', 'autumn', 'spring', 'sky', 'night', 'day', 'hand', 'foot', 'nose',
+    'mouth', 'ear', 'eye', 'hair', 'clothes', 'shoes', 'hat', 'watch', 'bag', 'money',
+    'food', 'drink', 'dessert', 'cook', 'waiter', 'doctor', 'nurse', 'police', 'firefighter', 'teacher',
+    'student', 'artist', 'musician', 'actor', 'writer', 'painter', 'history', 'science', 'mathematics', 'language'
+];
 const videosLinks = ["https://www.youtube.com/embed/So-EvKIYvpQ", "https://www.youtube.com/embed/exu61pb5X68", "https://www.youtube.com/embed/LcSFUP4gGn0", "https://www.youtube.com/embed/tiMaUSvlzIU"];
 const videosWords = [
     ['thank','rude',"sorry",'pick','up','her','get','please','you','will','good','noticed','not','on','is','that','still','of','out','was','have','wanted','here','your','dropped','she','a','start','has','ordered','make','to','like','would','i','everybody','celebration','toast','sock','mom', 'lunch','town','gosh','baby','ground', 'attention', 'mommy','god','sake'],
@@ -61,7 +83,6 @@ function pepe(message, backgroundColor, textColor) {
     
     
 }
-
 
 
 function createBootstrapNotification(title, message, type,time) {
@@ -376,6 +397,11 @@ function drill(clue){
         results.replaceChild(boton1Place, buttonAnswer);        
 
         indiceSpelling++;
+        if (indiceSpelling >= spelling.length) {
+            indiceSpelling = 0; // Reinicia el índice
+            palabrasTospell = 0; // Reinicia palabrasTospell a 0
+        }
+        
         
     }else if(clue == 'vocabulary'){
 
@@ -399,13 +425,15 @@ function drill(clue){
             ejercicio.appendChild(pregunta);
             bodyModal.replaceChild(ejercicio, ejercicioDisplay);
             results.replaceChild(boton1Place, buttonAnswer);
-          } else {
+            
+        } else {
             // Cuando se han agotado todas las palabras del juego de vocabulario
             let nodoEje = document.createTextNode('¡No hay más palabras para traducir!');
+            let nodopepe = document.createTextNode('Juega piedra papel o tijera con tu contraincante para avanzar');
             pregunta.appendChild(nodoEje);
             ejercicio.appendChild(pregunta);
-            bodyModal.replaceChild(ejercicio, ejercicioDisplay);
-          }
+            bodyModal.replaceChild(ejercicio, ejercicioDisplay);   
+        }        
       
     }else if(clue == 'grammar'){
         let oracion = sentences.pop();
@@ -659,7 +687,6 @@ function rightAnswer(clue) {
     if (indiceVideos >= videosLinks.length) {
         indiceVideos=0;
     }
-    document.getElementById('checkAnswerButton').disabled = true;
 }
 
 document.getElementById("victoryButton").addEventListener("click", function() {

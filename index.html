@@ -36,7 +36,7 @@
 
             <div class="container-fluid mb-5">
                 <div class="row align-content-center justify-content-center" style="height: 170px;">
-                    <div class="col-2 start">
+                    <div class="col-2 casillas start">
                         <label for="numPlayers"> Select how many players you are: </label>
                         <select class="form-select playas" aria-label="Default select example" id="numPlayers">
                             <option  selected>Zero</option>
@@ -46,7 +46,7 @@
                         <button id="startButton" onclick="comenzar()" class="btn btn-primary w-100" style="width: 100px; margin-top: 20px; height: 50px;">Start</button>
 
                     </div>
-                    <div class="col-2 text-center dado" id="randomNum" style="position: fixed; top: px; right:10px;">
+                    <div class="col-2  text-center dado" id="randomNum" style="position: fixed; top: px; right:10px;">
                         <i class="fa-solid fa-dice fa-spin-pulse fs-1 pb-2" id="dadoVisto"></i>
                         <button id="getStepsButton" class="btn btn-warning w-100 mt-3" onclick="getSteps()" style="height: 50px;" disabled>Get Steps</button>
                         <div class="pt-1">
@@ -63,14 +63,14 @@
                             <h1 class="mt-5">START</h1>
                         </div>
                         <div class="row justify-content-center pe-3" id="0">
-                            <div class="col-2 " id="0a"></div>
-                            <div class="col-2 " id="0b"></div>
+                            <div class="col-2" id="0a"> </div>
+                            <div class="col-2" id="0b"> </div>
                         </div>
                     </div>
                     <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
-                        <div class="row justify-content-center py-1" id="1">
-                            <div class="col-2 " id="1a"></div>
-                            <div class="col-2 " id="1b"></div>
+                        <div class="row justify-content-center py-1 " id="1">
+                            <div class="col-2" id="1a"> </div>
+                            <div class="col-2" id="1b"> </div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -78,8 +78,8 @@
                     </div>
                     <div class="col-2 bg-danger pt-5 text-center" id="pepe" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="2">
-                            <div class="col-2 " id="2a"></div>
-                            <div class="col-2" id="2b"></div>
+                            <div class="col-2 " id="2a"> </div>
+                            <div class="col-2 " id="2b"> </div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-book fa-xl"></i>
@@ -88,8 +88,8 @@
                     </div>
                     <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios" >
                         <div class="row justify-content-center py-1" id="3">
-                            <div class="col-2" id="3a"></div>
-                            <div class="col-2" id="3b"></div>
+                            <div class="col-2" id="3a"> </div>
+                            <div class="col-2" id="3b"> </div>
                         </div>
                         <div class="row ">
                             <i class="fa-regular fa-circle-check fa-l"></i>
@@ -99,8 +99,8 @@
                     </div>
                     <div class="col-2 bg-secondary text-white text-center" >
                         <div class="row justify-content-center pt-3" id="4">
-                            <div class="col-2" id="4a"></div>
-                            <div class="col-2" id="4b"></div>
+                            <div class="col-2" id="4a"> </div>
+                            <div class="col-2" id="4b"> </div>
                         </div>
                         <div class="row mt-2 pt-1">
                             <h2 class="pt-4"> You Decide!</h2>
@@ -119,8 +119,8 @@
                 <div class="row justify-content-center" style="height: 150px;" >
                     <div class="col-2 bg-secondary text-white text-center" >
                         <div class="row justify-content-center pt-3" id="8">
-                            <div class="col-2" id="8a"></div>
-                            <div class="col-2" id="8b"></div>
+                            <div class="col-2" id="8a"> </div>
+                            <div class="col-2" id="8b"> </div>
                         </div>
                         <div class="row mt-2 pt-1">
                             <h2 class="pt-4"> You Decide!</h2>
@@ -129,8 +129,8 @@
                     </div>
                     <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('listening')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="7">
-                            <div class="col-2" id="7a"></div>
-                            <div class="col-2" id="7b"></div>
+                            <div class="col-2" id="7a"> </div>
+                            <div class="col-2" id="7b"> </div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-headphones"></i>
@@ -139,8 +139,8 @@
 
                     <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="6">
-                            <div class="col-2" id="6a"></div>
-                            <div class="col-2" id="6b"></div>
+                            <div class="col-2" id="6a"> </div>
+                            <div class="col-2" id="6b"> </div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-book fa-xl"></i>
@@ -149,8 +149,8 @@
                     </div>
                     <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="5">
-                            <div class="col-2" id="5a"></div>
-                            <div class="col-2" id="5b"></div>
+                            <div class="col-2" id="5a"> </div>
+                            <div class="col-2" id="5b"> </div>
                         </div>                    
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -163,8 +163,8 @@
 
                             <div class="col-2 bg-secondary text-white text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                                 <div class="row justify-content-center py-1" id="4">
-                                    <div class="col-2" id="4a"></div>
-                                    <div class="col-2" id="4b"></div>
+                                    <div class="col-2" id="4a"> </div>
+                                    <div class="col-2" id="4b"> </div>
                                 </div>
                                 <div class="col-2 my-5">
                                     <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -172,8 +172,8 @@
                             </div>
                             <div class="col-2 bg-secondary text-white text-center" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                                 <div class="row justify-content-center py-1" id="4">
-                                    <div class="col-2" id="4a"></div>
-                                    <div class="col-2" id="4b"></div>
+                                    <div class="col-2" id="4a"> </div>
+                                    <div class="col-2" id="4b"> </div>
                                 </div>
                                 <div class="col-2 my-5">
                                     <i class="fa-solid fa-book fa-xl"></i>
@@ -182,8 +182,8 @@
 
                             <div class="col-2 bg-secondary text-white text-center" onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                                 <div class="row justify-content-center py-1" id="4">
-                                    <div class="col-2" id="4a"></div>
-                                    <div class="col-2" id="4b"></div>
+                                    <div class="col-2" id="4a"> </div>
+                                    <div class="col-2" id="4b"> </div>
                                 </div>
                                 <div class="col-2 my-4">
                                     <i class="fa-regular fa-circle-check fa-l"></i>
@@ -218,8 +218,8 @@
                     </div>                               
                     <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="9">
-                            <div class="col-2" id="9a"></div>
-                            <div class="col-2" id="9b"></div>
+                            <div class="col-2" id="9a"> </div>
+                            <div class="col-2" id="9b"> </div>
                         </div>                    
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -228,8 +228,8 @@
                     </div>
                     <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="10">
-                            <div class="col-2" id="10a"></div>
-                            <div class="col-2" id="10b"></div>
+                            <div class="col-2" id="10a" ></div>
+                            <div class="col-2" id="10b" ></div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-book fa-xl"></i>
@@ -238,8 +238,8 @@
                     </div>
                     <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="11">
-                            <div class="col-2" id="11a"></div>
-                            <div class="col-2" id="11b"></div>
+                            <div class="col-2" id="11a" ></div>
+                            <div class="col-2" id="11b" ></div>
                         </div>
                         <div class="row ">
                             <i class="fa-regular fa-circle-check fa-l"></i>
@@ -249,8 +249,8 @@
                     </div>
                     <div class="col-2 bg-secondary text-white text-center">
                         <div class="row justify-content-center pt-3" id="12">
-                            <div class="col-2" id="12a"></div>
-                            <div class="col-2" id="12b"></div>
+                            <div class="col-2" id="12a" ></div>
+                            <div class="col-2" id="12b" ></div>
                         </div>
                         <div class="row mt-2 pt-1">
                             <h2 class="pt-4"> You Decide!</h2>
@@ -268,8 +268,8 @@
                 <div class="row justify-content-center" style="height: 150px;">
                     <div class="col-2 bg-secondary text-white text-center" >
                         <div class="row justify-content-center pt-3" id="16">
-                            <div class="col-2" id="16a"></div>
-                            <div class="col-2" id="16b"></div>
+                            <div class="col-2" id="16a" ></div>
+                            <div class="col-2" id="16b" ></div>
                         </div>
                         <div class="row mt-2 pt-1">
                             <h2 class="pt-4"> You Decide!</h2>
@@ -278,8 +278,8 @@
                     </div> 
                     <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('listening')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="15">
-                            <div class="col-2" id="15a"></div>
-                            <div class="col-2" id="15b"></div>
+                            <div class="col-2" id="15a" ></div>
+                            <div class="col-2" id="15b" ></div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-headphones"></i>
@@ -288,8 +288,8 @@
                     </div>             
                     <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="14">
-                            <div class="col-2" id="14a"></div>
-                            <div class="col-2" id="14b"></div>
+                            <div class="col-2" id="14a" ></div>
+                            <div class="col-2" id="14b" ></div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-book fa-xl"></i>
@@ -298,8 +298,8 @@
                     </div>
                     <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="13">
-                            <div class="col-2" id="13a"></div>
-                            <div class="col-2" id="13b"></div>
+                            <div class="col-2" id="13a" ></div>
+                            <div class="col-2" id="13b" ></div>
                         </div>                    
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -348,8 +348,8 @@
                     </div>                               
                     <div class="col-2 bg-danger-subtle pt-5 text-center" onclick="drill('spelling')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="17">
-                            <div class="col-2" id="17a"></div>
-                            <div class="col-2" id="17b"></div>
+                            <div class="col-2" id="17a" ></div>
+                            <div class="col-2" id="17b" ></div>
                         </div>                    
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-spell-check fa-xl"></i>
@@ -358,8 +358,8 @@
                     </div>
                     <div class="col-2 bg-danger pt-5 text-center" onclick="drill('vocabulary')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="18">
-                            <div class="col-2" id="18a"></div>
-                            <div class="col-2" id="18b"></div>
+                            <div class="col-2" id="18a" ></div>
+                            <div class="col-2" id="18b" ></div>
                         </div>
                         <div class="row mt-3 pt-1">
                             <i class="fa-solid fa-book fa-xl"></i>
@@ -368,8 +368,8 @@
                     </div>
                     <div class="col-2 bg-dark text-white pt-5 text-center" onclick="drill('grammar')" data-bs-toggle="modal" data-bs-target="#Ejercicios">
                         <div class="row justify-content-center py-1" id="19">
-                            <div class="col-2" id="19a"></div>
-                            <div class="col-2" id="19b"></div>
+                            <div class="col-2" id="19a" ></div>
+                            <div class="col-2" id="19b" ></div>
                         </div>
                         <div class="row ">
                             <i class="fa-regular fa-circle-check fa-l"></i>
@@ -381,8 +381,8 @@
 
                         <h1 class="mt-5">END</h1>
                         <div class="row justify-content-center pe-3" id="20">
-                            <div class="col-2" id="20a"></div>
-                            <div class="col-2" id="20b"></div>
+                            <div class="col-2" id="20a" ></div>
+                            <div class="col-2" id="20b" ></div>
                         </div>
                         <audio id="victorySound" src="Sound/efecto de sonido victoria happy wheels.mp4"></audio>
 

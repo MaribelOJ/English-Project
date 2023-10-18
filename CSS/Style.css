@@ -236,4 +236,19 @@ i{
 
 .col-2{
     opacity: 0.95;
+    position: relative;
 }
+
+.bg-transparent {
+    background-color: #e6e6e6; /* Cambia el color de fondo a tu preferencia */
+    padding: 5px;
+    border: 2px solid #555; /* Añade un borde más pronunciado */
+    margin-left: 30px; /* Añade más espacio entre los elementos */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega una suave sombra */
+    border-radius: 5px; /* Añade esquinas redondeadas */
+    color: #333; /* Cambia el color del texto */
+    
+    
+}
+
