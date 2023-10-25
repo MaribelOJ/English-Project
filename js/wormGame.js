@@ -494,7 +494,7 @@ function drill(clue){
         
         let iframe = document.createElement("iframe");
         iframe.height="300";
-        iframe.width="300";
+        iframe.width="100%";
         iframe.src = videosLinks[indiceVideos];
         iframe.title = "Video de Youtube";    
         
