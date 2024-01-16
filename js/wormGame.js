@@ -54,6 +54,7 @@ const usedWords = new Set();
 let jugadorImpar = 0;
 let jugadorPar = 0;
 let wordToTranslate;
+let answer;
 let EnglishWord;
 let copia = "";
 let lastMovePar =0;
@@ -408,6 +409,7 @@ function drill(clue){
         if (vocabulary.length > 0) {
             // Mostrar una palabra en español como pista
             wordToTranslate = vocabulary.pop(); // Asigna la palabra a wordToTranslate
+            EnglishWord = translation.pop();
             let nodoEje = document.createTextNode('How do you say/write "' + wordToTranslate + '" in English?');
             pregunta.appendChild(nodoEje);
       
@@ -437,6 +439,7 @@ function drill(clue){
       
     }else if(clue == 'grammar'){
         let oracion = sentences.pop();
+        answer = rightOption.pop();
         
 
         let nodoEje = document.createTextNode("COMPLETE:   "+oracion);
@@ -588,7 +591,7 @@ function rightAnswer(clue) {
     }else  if (clue === 'vocabulary') {
         let buttonAnswer = document.getElementById('answerRequest');
         
-        EnglishWord = translation.pop();
+        
         const inputField = document.getElementById('vocabularyInput');
         const playerAnswer = inputField.value.trim().toLowerCase();  
 
@@ -609,7 +612,7 @@ function rightAnswer(clue) {
         buttonAnswer.disabled = true;
     }else if(clue == 'grammar'){
             let option = document.getElementsByName("grammar");
-            let answer = rightOption.pop();
+            
             let selectedOption = false;
     
             for (var i = 0; i < option.length; i++) {
